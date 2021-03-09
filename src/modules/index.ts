@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import counter from './counter/counterReducer';
 
 const rootReducer = combineReducers({
-  //Reducers
+  counter,
 });
 
 export default rootReducer;
+
+export type RootState = ReturnType<typeof rootReducer>;
