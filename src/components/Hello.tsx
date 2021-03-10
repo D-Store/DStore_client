@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import useCoutner from 'hooks/useCounter';
 import useTodo from 'hooks/useTodo';
 import useInput from 'hooks/useInput';
@@ -10,9 +10,21 @@ const Hello = () => {
   const { number, onIncrease, onDecrease } = useCoutner();
   const { todos, onAddTodo, onRemoveTodo, onToggleTodo } = useTodo();
 
-  const onSubmit = (text: string) => {
-    onAddTodo(text);
-  };
+  const onSubmit = useCallback(
+    (text: string) => {
+      console.log(text);
+      onAddTodo(text);
+    },
+    [onAddTodo]
+  );
+
+  const onDelete = useCallback(
+    (id: number) => {
+      console.log(id);
+      onRemoveTodo(id);
+    },
+    [onRemoveTodo]
+  );
 
   return (
     <>
@@ -21,16 +33,19 @@ const Hello = () => {
       <button onClick={onDecrease}>-</button>
       <hr />
       <input type="text" {...input} />
-      <button onSubmit={() => onSubmit(input.value)}>제출</button>
+      <button onClick={() => onSubmit(input.value)}>제출</button>
       <ul>
         {todos.map((todo) => (
-          <li
-            key={todo.id}
-            style={todo.done ? todoItemStyle : {}}
-            onClick={() => onToggleTodo(todo.id)}
-          >
-            {todo.text}
-          </li>
+          <>
+            <li
+              key={todo.id}
+              style={todo.done ? todoItemStyle : {}}
+              onClick={() => onToggleTodo(todo.id)}
+            >
+              {todo.text}
+            </li>
+            <button onClick={() => onDelete(todo.id)}>삭제</button>
+          </>
         ))}
       </ul>
     </>
