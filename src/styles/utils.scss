@@ -1,0 +1,24 @@
+$interval_1: 4px;
+$interval_2: 6px;
+$interval_3: 8px;
+$interval_4: 10px;
+$interval_5: 12px;
+$interval_6: 14px;
+$interval_7: 16px;
+$interval_8: 18px;
+$interval_9: 20px;
+
+$title_1: 18px;
+$title_2: 20px;
+$title_3: 22px;
+$title_4: 24px;
+
+$content_1: 12px;
+$content_2: 14px;
+$content_3: 16px;
+
+@mixin centerSort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
