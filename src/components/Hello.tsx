@@ -36,16 +36,12 @@ const Hello = () => {
       <button onClick={() => onSubmit(input.value)}>제출</button>
       <ul>
         {todos.map((todo) => (
-          <>
-            <li
-              key={todo.id}
-              style={todo.done ? todoItemStyle : {}}
-              onClick={() => onToggleTodo(todo.id)}
-            >
+          <li key={todo.id}>
+            <div style={todo.done ? todoItemStyle : {}} onClick={() => onToggleTodo(todo.id)}>
               {todo.text}
-            </li>
+            </div>
             <button onClick={() => onDelete(todo.id)}>삭제</button>
-          </>
+          </li>
         ))}
       </ul>
     </>
