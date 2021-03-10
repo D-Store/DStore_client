@@ -1,14 +1,19 @@
 import * as Pages from 'pages';
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import 'styles/App.scss';
 
 function App() {
   return (
     <Router>
-      <Route exact path="/">
-        <Pages.WelcomePage />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <Pages.WelcomePage />
+        </Route>
+        <Route path="*">
+          <Pages.NotFoundPage />
+        </Route>
+      </Switch>
     </Router>
   );
 }
