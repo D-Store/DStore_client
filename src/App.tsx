@@ -2,20 +2,18 @@ import React from "react";
 import { RecoilRoot } from "recoil";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
-import useInput from "./Hooks/useInput";
+import MainPage from "./Pages/MainPage";
+import LoginPage from "./Pages/LoginPage";
+import SignUpPage from "./Pages/SignUpPage";
 
 function App() {
-  const text = useInput();
   return (
     <RecoilRoot>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <div className="App">
-              hi
-              <input type="text" {...text} />
-            </div>
-          </Route>
+          <Route exact path="/" component={MainPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={SignUpPage} />
         </Switch>
       </Router>
     </RecoilRoot>
