@@ -13,8 +13,10 @@ interface IBannerItem {
 
 export const BannerItem = styled.div<IBannerItem>`
   background-image: url(${(props) => props.url});
-  height: 320px;
+  height: 220px;
+  width: auto;
   background-size: 100% 100%;
+  background-repeat: no-repeat;
 `;
 
 export const CustomDots = styled.ul`
