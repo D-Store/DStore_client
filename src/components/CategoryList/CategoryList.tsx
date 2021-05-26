@@ -15,30 +15,30 @@ const CategoryList: React.FC = () => {
     <div>
       <CategoryContainer>
         <CategoryContent>
-          <CategoryItem>
-            <Link href="/web">
+          <Link href="/web">
+            <CategoryItem>
               <a>웹</a>
-            </Link>
-            <img src={web}  className="icon" />
-          </CategoryItem>
-          <CategoryItem>
-            <Link href="/web">
+              <img src={web} className="icon" />
+            </CategoryItem>
+          </Link>
+          <Link href="/app">
+            <CategoryItem>
               <a>앱</a>
-            </Link>
-            <img src={app}  className="icon" />
-          </CategoryItem>
-          <CategoryItem>
-            <Link href="/web">
+              <img src={app} className="icon" />
+            </CategoryItem>
+          </Link>
+          <Link href="/game">
+            <CategoryItem>
               <a>게임</a>
-            </Link>
-            <img src={game}  className="icon" />
-          </CategoryItem>
-          <CategoryItem>
-            <Link href="/web">
+              <img src={game} className="icon" />
+            </CategoryItem>
+          </Link>
+          <Link href="/embedded">
+            <CategoryItem>
               <a>임베디드</a>
-            </Link>
-            <img src={embedded}  className="icon" />
-          </CategoryItem>
+              <img src={embedded} className="icon" />
+            </CategoryItem>
+          </Link>
         </CategoryContent>
       </CategoryContainer>
     </div>

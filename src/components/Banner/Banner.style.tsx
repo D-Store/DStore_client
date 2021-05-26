@@ -18,6 +18,7 @@ export const BannerItem = styled.div<IBannerItem>`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border-radius: 20px;
 `;
 
 export const CustomDots = styled.ul`

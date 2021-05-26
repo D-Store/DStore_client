@@ -26,13 +26,19 @@ interface IBanner {
 }
 
 const Banner: React.FC<IBanner> = ({ banners }) => {
+  const hasBanner = Boolean(banners.length);
+
   return (
     <BannerContainer>
-      <Slider {...settings}>
-        {banners.map((banner) => (
-          <BannerItem key={banner.id} url={banner.fileLocation} />
-        ))}
-      </Slider>
+      {hasBanner ? (
+        <Slider {...settings}>
+          {banners.map((banner) => (
+            <BannerItem key={banner.id} url={banner.fileLocation} />
+          ))}
+        </Slider>
+      ) : (
+        <BannerItem url="https://images.velog.io/images/hjh040302/post/d7edffcd-e412-41fd-92ac-e4e66301258e/image.png" />
+      )}
     </BannerContainer>
   );
 };

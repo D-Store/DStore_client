@@ -22,14 +22,7 @@ const index: NextPage = ({ banners }: any) => {
 export const getServerSideProps = async () => {
   try {
     const res: any = await getBannerAPI();
-    console.log(res);
-    // if (!res.bannerLocation) {
-    //   return {
-    //     props: {
-    //       banners: [],
-    //     },
-    //   };
-    // }
+
     return {
       props: {
         banners: res.data.bannerLocation,
