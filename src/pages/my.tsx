@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const my = () => {
+const my: React.FC = () => {
   return (
     <>
       <Head>

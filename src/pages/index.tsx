@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const index = () => {
+const index: React.FC = () => {
   return (
     <>
       <Head>
