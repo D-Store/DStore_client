@@ -14,22 +14,27 @@ export const CategoryContent = styled.div`
     display:grid ;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 50px;
+    position: relative;
 `;
 
 export const CategoryItem = styled.div`
+    position: relative;
     width: 100%;
     height: 180px;
-    padding: 24px;
-    background-color: #333333;
-    border-radius: 2rem;
     a{
+        margin: 24px;
+        position: absolute;
         font-size: 36px;
         font-weight: bold;
         color: #D4D4D4;
+        left: 24;
         text-decoration: none;
     }
     .icon{
-        width: 10px;
-        height: 10px;
+        width: 240px;
+        height: 180px;
+        z-index: -1;
+        position: absolute;
+        bottom: 0;
     }
 `;
