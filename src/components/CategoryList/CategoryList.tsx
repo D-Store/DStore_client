@@ -1,12 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import { CategoryContainer, CategoryContent, CategoryItem } from "./CategoryList.style";
-// const web = require("../../public/image/Category_web.png")
-// import web from "../../public/image/Category_web.png";
-// import app from "../../public/png/Category_app.png";
-// import game from "../../public/png/Category_game.png";
-// import embedded from "../../public/png/Category_embedded.png";
-
+import {
+  CategoryContainer,
+  CategoryContent,
+  CategoryItem,
+} from "./CategoryList.style";
+import web from "../../public/static/image/Category_web.png";
+import app from "../../public/static/image/Category_app.png";
+import game from "../../public/static/image/Category_game.png";
+import embedded from "../../public/static/image/Category_embedded.png";
 
 const CategoryList: React.FC = () => {
   return (
@@ -17,25 +19,25 @@ const CategoryList: React.FC = () => {
             <Link href="/web">
               <a>웹</a>
             </Link>
-            <img src={web}/>
+            <img src={web} />
           </CategoryItem>
           <CategoryItem>
             <Link href="/web">
               <a>앱</a>
             </Link>
-            {/* <App classname="icon" /> */}
+            <img src={app} alt="" />
           </CategoryItem>
           <CategoryItem>
             <Link href="/web">
               <a>게임</a>
             </Link>
-            {/* <Game classname="icon" /> */}
+            <img src={game} alt="" />
           </CategoryItem>
           <CategoryItem>
             <Link href="/web">
               <a>임베디드</a>
             </Link>
-            {/* <Embedded classname="icon" /> */}
+            <img src={embedded} alt="" />
           </CategoryItem>
         </CategoryContent>
       </CategoryContainer>
