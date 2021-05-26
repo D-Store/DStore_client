@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import Banner from "../components/Banner";
 
 const index: NextPage = () => {
   return (
@@ -7,7 +8,10 @@ const index: NextPage = () => {
       <Head>
         <title>메인 | 디스토어</title>
       </Head>
-      <div>메인 페이지입니다.</div>
+      <div>
+        <Banner />
+        {/* <CategoryList /> */}
+      </div>
     </>
   );
 };

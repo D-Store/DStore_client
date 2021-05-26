@@ -17,6 +17,9 @@ const globalStyle = css`
     margin-left: auto;
     margin-right: auto; */
   }
+  .slick-slide div {
+    border-radius: 30px;
+  }
 `;
 
 const GlobalStyle = createGlobalStyle`
