@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import Head from "next/head";
 
-const index: React.FC = () => {
+const index: NextPage = () => {
   return (
     <>
       <Head>

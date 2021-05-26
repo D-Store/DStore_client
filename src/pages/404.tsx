@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import Head from "next/head";
 
-const NotFound = () => {
+const NotFound: NextPage = () => {
   return (
     <>
       <Head>

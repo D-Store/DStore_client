@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import Head from "next/head";
 
-const find: React.FC = () => {
+const find: NextPage = () => {
   return (
     <>
       <Head>
