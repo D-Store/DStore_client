@@ -1,4 +1,4 @@
 export interface BannerType {
   id: number;
-  locationURL: string;
+  fileLocation: string;
 }

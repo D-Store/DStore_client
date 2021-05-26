@@ -1,4 +1,5 @@
 import React from "react";
+import { getBannerAPI } from "../../lib/api/banner";
 import { BannerType } from "../../types/banner";
 import {
   BannerContainer,
@@ -8,17 +9,6 @@ import {
 } from "./Banner.style";
 import Slider, { Settings } from "react-slick";
 
-const fakebanners: BannerType[] = [
-  {
-    id: 1,
-    locationURL: "http://dodam.b1nd.com/api/image/png/DOLRank.png",
-  },
-  {
-    id: 2,
-    locationURL: "http://dodam.b1nd.com/api/image/png/DOLRank.png",
-  },
-];
-
 const settings: Settings = {
   infinite: true,
   speed: 1000,
@@ -26,16 +16,21 @@ const settings: Settings = {
   slidesToScroll: 1,
   arrows: false,
   dots: true,
+  autoplay: true,
   customPaging: (i) => <CustomDot />,
   appendDots: (dots) => <CustomDots>{dots}</CustomDots>,
 };
 
-const Banner = () => {
+interface IBanner {
+  banners: BannerType[];
+}
+
+const Banner: React.FC<IBanner> = ({ banners }) => {
   return (
     <BannerContainer>
       <Slider {...settings}>
-        {fakebanners.map((banner) => (
-          <BannerItem key={banner.id} url={banner.locationURL} />
+        {banners.map((banner) => (
+          <BannerItem key={banner.id} url={banner.fileLocation} />
         ))}
       </Slider>
     </BannerContainer>
