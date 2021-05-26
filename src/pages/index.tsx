@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
+import CategoryList from "../components/CategoryList/index";
 
 const index: NextPage = () => {
   return (
@@ -10,7 +11,7 @@ const index: NextPage = () => {
       </Head>
       <div>
         <Banner />
-        {/* <CategoryList /> */}
+        <CategoryList />
       </div>
     </>
   );
