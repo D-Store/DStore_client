@@ -1,3 +1,7 @@
 const withImages = require("next-images");
-
-module.exports = withImages();
+module.exports = withImages({
+  esModule: true,
+  webpack(config, options) {
+    return config;
+  },
+});
