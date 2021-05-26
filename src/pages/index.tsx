@@ -11,4 +11,5 @@ const index: NextPage = () => {
     </>
   );
 };
+
 export default index;
