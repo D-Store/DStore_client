@@ -1,3 +1,4 @@
+import Footer from "../Footer";
 import Header from "../Header";
 import { PageTemplateContainer } from "./PageTemplate.style";
 
@@ -10,6 +11,7 @@ const PageTemplate: React.FC<IProps> = ({ children }) => {
     <PageTemplateContainer>
       <Header />
       <div className="PageTemplate-content">{children}</div>
+      <Footer />
     </PageTemplateContainer>
   );
 };
