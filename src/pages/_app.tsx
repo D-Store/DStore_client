@@ -5,6 +5,7 @@ import PageTemplate from "../components/PageTemplate";
 import GlobalStyle from "../style/GlobalStyle";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { wrapper } from "../store";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -26,4 +27,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

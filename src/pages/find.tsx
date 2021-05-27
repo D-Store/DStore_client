@@ -1,5 +1,9 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import { increase, decrease } from "../store/counter";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useSelector } from "../store";
 
 const find: NextPage = () => {
   return (

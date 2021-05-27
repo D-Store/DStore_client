@@ -4,8 +4,11 @@ import {
   useSelector as useReduxSelector,
   TypedUseSelectorHook,
 } from "react-redux";
+import counter from "./counter";
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  counter,
+});
 
 const reducer = (state: any, action: AnyAction) => {
   if (action.payload === HYDRATE) {
