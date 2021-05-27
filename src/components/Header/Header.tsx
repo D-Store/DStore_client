@@ -1,5 +1,5 @@
 import { HeaderContainer, HeaderNav, HeaderNavItem } from "./Header.style";
-import Logo from "../../public/svg/dstore_logo.svg";
+import Logo from "../../public/static/svg/dstore_logo.svg";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 

@@ -9,15 +9,15 @@ export const CategoryContainer = styled.div`
 `;
 
 export const CategoryContent = styled.div`
-    width: 1200px;
-    height: 200px ;
-    display:grid ;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 50px;
-    position: relative;
-    @media screen and (max-width: 910px) {
-        display: none;
-    }
+  width: 1200px;
+  height: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 50px;
+  position: relative;
+  @media screen and (max-width: 910px) {
+    display: none;
+  }
 `;
 
 export const CategoryItem = styled.div`
