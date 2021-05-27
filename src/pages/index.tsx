@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
 import CategoryList from "../components/CategoryList/index";
+import HotProjectList from "../components/HotProjectList";
 import { getBannerAPI, IGetBanner } from "../lib/api/banner";
 import { wrapper } from "../store";
 
@@ -14,6 +15,7 @@ const index: NextPage = ({ banners }: any) => {
       <div>
         <Banner banners={banners} />
         <CategoryList />
+        <HotProjectList />
       </div>
     </>
   );
