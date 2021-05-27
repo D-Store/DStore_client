@@ -14,7 +14,7 @@ const ProjectCard: React.FC<IProps> = ({ title, content, thumnail , isSlide }) =
   return (
     <ProjectCardContainer isSlide={isSlide} src={thumnail} >
       <ProjectInfo className="project-info">
-        <h1>{title}jj</h1>
+        <h1>{title}</h1>
         <span>{content}</span>
         <button>바로가기</button>
       </ProjectInfo>
