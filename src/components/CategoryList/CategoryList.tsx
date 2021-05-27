@@ -14,6 +14,8 @@ const CategoryList: React.FC = () => {
   return (
     <div>
       <CategoryContainer>
+        <h1>카테고리별 프로젝트</h1>
+        <p>각 플렛폼 별로 프로젝트를 보세요!</p>
         <CategoryContent>
           <Link href="/web">
             <CategoryItem>

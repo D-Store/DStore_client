@@ -4,7 +4,6 @@ import sizes from "../../style/sizes";
 
 export const BannerContainer = styled.section`
   width: 100%;
-  height: 320px;
 `;
 
 interface IBannerItem {

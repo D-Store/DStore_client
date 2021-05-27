@@ -6,6 +6,17 @@ export const CategoryContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin-top: 40px;
+  h1 {
+    font-weight: bold;
+    font-size: ${sizes.big_font};
+    padding: 1rem 1rem 0 1rem;
+  }
+  p {
+    padding: 1rem;
+    font-size: ${sizes.small_font};
+  }
 `;
 
 export const CategoryContent = styled.div`
