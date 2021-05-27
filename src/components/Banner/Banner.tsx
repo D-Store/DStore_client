@@ -1,5 +1,4 @@
 import React from "react";
-import { getBannerAPI } from "../../lib/api/banner";
 import { BannerType } from "../../types/banner";
 import {
   BannerContainer,
@@ -8,6 +7,7 @@ import {
   CustomDots,
 } from "./Banner.style";
 import Slider, { Settings } from "react-slick";
+import BannerDefault from "../../public/static/image/banner_image.png";
 
 const settings: Settings = {
   infinite: true,
@@ -37,7 +37,7 @@ const Banner: React.FC<IBanner> = ({ banners }) => {
           ))}
         </Slider>
       ) : (
-        <BannerItem url="https://images.velog.io/images/hjh040302/post/d7edffcd-e412-41fd-92ac-e4e66301258e/image.png" />
+        <BannerItem url={BannerDefault} />
       )}
     </BannerContainer>
   );

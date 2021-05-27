@@ -5,7 +5,6 @@ import CategoryList from "../components/CategoryList/index";
 import { getBannerAPI, IGetBanner } from "../lib/api/banner";
 
 const index: NextPage = ({ banners }: any) => {
-  console.log(banners);
   return (
     <>
       <Head>
@@ -31,7 +30,7 @@ export const getServerSideProps = async () => {
   } catch (error) {
     return {
       props: {
-        error,
+        banners: [],
       },
     };
   }

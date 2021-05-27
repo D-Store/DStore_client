@@ -15,7 +15,7 @@ export const BannerItem = styled.div<IBannerItem>`
   background-image: url(${(props) => props.url});
   height: 180px;
   width: 100%;
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 20px;

@@ -1,7 +1,11 @@
 const withImages = require("next-images");
-module.exports = withImages({
-  esModule: true,
-  webpack(config, options) {
+const withPlugins = require("next-compose-plugins");
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withPlugins([withBundleAnalyzer, withImages], {
+  webpack(config, { webpack }) {
     return config;
   },
 });
