@@ -4,11 +4,15 @@ import sizes from "../../style/sizes";
 
 interface IProjectCardContainer {
   src: string;
+  isSlide : boolean
 }
 
 export const ProjectCardContainer = styled.div<IProjectCardContainer>`
-  width: 1000px;
-  height: 560px;
+  
+  width: ${sizes.max_width};
+  height: ${sizes.project_height} ;
+  width: ${(props) =>  props.isSlide && sizes.slide_width };
+  height: ${(props) =>  props.isSlide && sizes.slide_height };
   color: white;
   border-radius: 30px;
   overflow: hidden;
@@ -16,7 +20,7 @@ export const ProjectCardContainer = styled.div<IProjectCardContainer>`
   background-size: contain;
   display: flex;
   align-items: flex-end;
-  margin-bottom: 70px;
+  margin-bottom : ${(props) =>  !props.isSlide && "50px" };
   &:hover .project-info {
     height: 100%;
     span {

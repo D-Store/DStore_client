@@ -3,6 +3,7 @@ import Head from "next/head";
 import Banner from "../components/Banner";
 import CategoryList from "../components/CategoryList/index";
 import HotProjectList from "../components/HotProjectList";
+import SlideProjectList from "../components/SlideProjectList"
 import { getBannerAPI } from "../lib/api/banner";
 import { getProjects } from "../lib/api/project";
 import { wrapper } from "../store";
@@ -16,7 +17,9 @@ const index: NextPage = ({ banners, projects }: any) => {
       <div>
         <Banner banners={banners} />
         <CategoryList />
+        <SlideProjectList />
         <HotProjectList projects={projects} />
+
       </div>
     </>
   );
