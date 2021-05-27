@@ -32,7 +32,7 @@ export const ProjectCardContainer = styled.div<IProjectCardContainer>`
     button {
       position: absolute;
       display: flex;
-      bottom: 50px;
+      bottom: 10px;
       right: 50px;
       border: none;
       padding: 10px 20px;
@@ -47,9 +47,9 @@ export const ProjectCardContainer = styled.div<IProjectCardContainer>`
 
 export const ProjectInfo = styled.div`
   width: 100%;
-  height: 130px;
+  height: 25%;
   bottom: 0;
-  backdrop-filter: blur(60px);
+  backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.6);
   padding: 1rem;
   transition: ease-in 0.4s;
