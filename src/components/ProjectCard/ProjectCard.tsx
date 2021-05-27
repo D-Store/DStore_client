@@ -2,19 +2,19 @@ import React from "react";
 import { ProjectType } from "../../types/project";
 import { ProjectCardContainer, ProjectInfo } from "./ProjectCard.style";
 
-const ProjectCard: React.FC<ProjectType> = ({ title, content, files }) => {
-  const fakeMainThumnail = "http://img.woowahan.com/www/common/baemin.jpg";
-  //   const mainThumnail = files[0].fileLocation;
+interface IProps {
+  title: string;
+  content: string;
+  thumnail: string;
+}
 
-  const fakeTitle = "배달의 민족";
-  const fakeDesc =
-    "좋은 음식을 먹고싶은 곳에서 [배달의 민족]좋은 음식을 먹고싶은 곳에서 [배달의 민족]좋은 음식을 먹고싶은 곳에서 [배달의 민족]";
-
+const ProjectCard: React.FC<IProps> = ({ title, content, thumnail }) => {
   return (
-    <ProjectCardContainer src={fakeMainThumnail}>
+    <ProjectCardContainer src={thumnail}>
       <ProjectInfo className="project-info">
-        <h1>{fakeTitle}</h1>
-        <span>{fakeDesc}</span>
+        <h1>{title}</h1>
+        <span>{content}</span>
+        <button>바로가기</button>
       </ProjectInfo>
     </ProjectCardContainer>
   );

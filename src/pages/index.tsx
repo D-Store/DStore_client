@@ -3,10 +3,11 @@ import Head from "next/head";
 import Banner from "../components/Banner";
 import CategoryList from "../components/CategoryList/index";
 import HotProjectList from "../components/HotProjectList";
-import { getBannerAPI, IGetBanner } from "../lib/api/banner";
+import { getBannerAPI } from "../lib/api/banner";
+import { getProjects } from "../lib/api/project";
 import { wrapper } from "../store";
 
-const index: NextPage = ({ banners }: any) => {
+const index: NextPage = ({ banners, projects }: any) => {
   return (
     <>
       <Head>
@@ -15,7 +16,7 @@ const index: NextPage = ({ banners }: any) => {
       <div>
         <Banner banners={banners} />
         <CategoryList />
-        <HotProjectList />
+        <HotProjectList projects={projects} />
       </div>
     </>
   );
@@ -24,11 +25,13 @@ const index: NextPage = ({ banners }: any) => {
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     try {
-      const res: any = await getBannerAPI();
+      const bannerRes: any = await getBannerAPI();
+      const projectRes: any = await getProjects();
 
       return {
         props: {
-          banners: res.data.bannerLocation,
+          banners: bannerRes.data.bannerLocation,
+          projects: projectRes.data.projectList,
         },
       };
     } catch (error) {

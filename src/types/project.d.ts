@@ -4,14 +4,12 @@ export interface ProjectType {
   content: string;
   createAt: string;
   tags: string[];
-  files: [
-    {
-      id: number;
-      fileLocation: string;
-      type: string;
-      thumnail: number;
-    }
-  ];
+  mainPhoto: {
+    id: number;
+    fileLocation: string;
+    type: string;
+    thumnail: false;
+  };
   users: [
     {
       id: number;
