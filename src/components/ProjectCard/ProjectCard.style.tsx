@@ -17,7 +17,9 @@ export const ProjectCardContainer = styled.div<IProjectCardContainer>`
   border-radius: 30px;
   overflow: hidden;
   background-image: url(${(props) => props.src});
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center ;
   display: flex;
   align-items: flex-end;
   margin-bottom : ${(props) =>  !props.isSlide && "50px" };
