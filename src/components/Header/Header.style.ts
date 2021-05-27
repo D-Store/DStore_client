@@ -14,6 +14,7 @@ export const HeaderContainer = styled.header`
   margin: 0 auto;
   margin-bottom: 100px;
   .logo {
+    margin-top: 10px;
     width: 150px;
     height: 90px;
   }
