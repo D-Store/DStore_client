@@ -15,13 +15,18 @@ export const CategoryContent = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 50px;
     position: relative;
+    @media screen and (max-width: 910px) {
+        display: none;
+    }
 `;
 
 export const CategoryItem = styled.div`
     position: relative;
     width: 100%;
     height: 180px;
+    cursor: pointer;
     a{
+        cursor: pointer;
         margin: 24px;
         position: absolute;
         font-size: 36px;
@@ -31,10 +36,10 @@ export const CategoryItem = styled.div`
         text-decoration: none;
     }
     .icon{
+        cursor: pointer;
         width: 240px;
         height: 180px;
         z-index: -1;
         position: absolute;
-        bottom: 0;
     }
 `;
