@@ -23,6 +23,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <PageTemplate>
         <Component {...pageProps} />
       </PageTemplate>
+      <div id="root-modal"></div>
     </>
   );
 };
