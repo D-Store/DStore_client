@@ -1,34 +1,40 @@
-import { HYDRATE, createWrapper } from "next-redux-wrapper";
+import { HYDRATE, createWrapper, MakeStore } from "next-redux-wrapper";
 import { configureStore, combineReducers, AnyAction } from "@reduxjs/toolkit";
 import {
   useSelector as useReduxSelector,
   TypedUseSelectorHook,
 } from "react-redux";
-import counter from "./counter";
+
+import user from "./user";
 
 const rootReducer = combineReducers({
-  counter,
+  user: user.reducer,
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
+
+let initialRootState: RootState;
 
 const reducer = (state: any, action: AnyAction) => {
   if (action.payload === HYDRATE) {
-    const nextState = {
-      ...state,
-      ...action.payload,
-    };
-    if (state.count) nextState.count = state.count;
-    return nextState;
+    if (state === initialRootState) {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    }
+    return state;
   }
   return rootReducer(state, action);
 };
 
-export type RootState = ReturnType<typeof rootReducer>;
-
-const initStore = () => {
-  return configureStore({
+const initStore: MakeStore = () => {
+  const store = configureStore({
     reducer,
-    devTools: true,
+    devTools: process.env.NODE_ENV === "development" ? true : false,
   });
+  initialRootState = store.getState();
+  return store;
 };
 
 export const wrapper = createWrapper(initStore);

@@ -6,13 +6,17 @@ interface IProps {
   title: string;
   content: string;
   thumnail: string;
-  isSlide: boolean
+  isSlide: boolean;
 }
 
-const ProjectCard: React.FC<IProps> = ({ title, content, thumnail , isSlide }) => {
-  console.log(isSlide);
+const ProjectCard: React.FC<IProps> = ({
+  title,
+  content,
+  thumnail,
+  isSlide,
+}) => {
   return (
-    <ProjectCardContainer isSlide={isSlide} src={thumnail} >
+    <ProjectCardContainer isSlide={isSlide} src={thumnail}>
       <ProjectInfo className="project-info">
         <h1>{title}</h1>
         <span>{content}</span>

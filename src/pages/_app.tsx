@@ -1,13 +1,12 @@
-import { AppProps } from "next/app";
+import App, { AppContext, AppProps } from "next/app";
 import Head from "next/head";
-import Header from "../components/Header";
 import PageTemplate from "../components/PageTemplate";
 import GlobalStyle from "../style/GlobalStyle";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { wrapper } from "../store";
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const app = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
@@ -28,4 +27,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default wrapper.withRedux(MyApp);
+app.getInitialProps = async (context: AppContext) => {
+  const appInitialProps = await App.getInitialProps(context);
+
+  console.log(context.ctx.req?.headers.cookie);
+
+  return { ...appInitialProps };
+};
+
+export default wrapper.withRedux(app);
