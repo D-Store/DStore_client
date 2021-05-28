@@ -13,12 +13,13 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<Form> = async (data) => {
     const res = await loginAPI(data);
-    console.log(res);
+
+    console.log(res.data.tokens);
   };
 
   return (
     <Container>
-      <h1>로그인이 필요한 서비스입니다.</h1>
+      <h1>로그인</h1>
       <form>
         <input type="text" {...register("email")} placeholder="이메일" />
         <input
@@ -28,6 +29,9 @@ const LoginForm = () => {
         />
         <button onClick={handleSubmit(onSubmit)}>로그인</button>
       </form>
+      <div className="go-register">
+        회원이 아니신가요? <span>회원가입</span>
+      </div>
     </Container>
   );
 };

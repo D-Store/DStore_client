@@ -29,7 +29,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     try {
       const bannerRes: any = await getBannerAPI();
-      const projectRes: any = await getProjects();
+      const projectRes: any = await getProjects({
+        page: 0,
+        size: 4,
+        sort: "id,desc",
+      });
 
       return {
         props: {

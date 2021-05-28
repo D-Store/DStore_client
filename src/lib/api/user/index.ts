@@ -6,9 +6,7 @@ interface IProps {
 }
 
 export const loginAPI = async (data: IProps) => {
-  const res = customAxios.post(`/auth/login`, {
-    data,
-  });
+  const res = customAxios.post(`/auth/login`, data);
 
   return res;
 };
