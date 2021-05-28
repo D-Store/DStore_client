@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
 import CategoryList from "../components/CategoryList/index";
-import HotProjectList from "../components/HotProjectList";
+import NewProjectList from "../components/NewProjectList";
 import SlideProjectList from "../components/SlideProjectList"
 import { getBannerAPI } from "../lib/api/banner";
 import { getProjects } from "../lib/api/project";
@@ -18,7 +18,7 @@ const index: NextPage = ({ banners, projects }: any) => {
         <Banner banners={banners} />
         <CategoryList />
         <SlideProjectList />
-        <HotProjectList projects={projects} />
+        <NewProjectList projects={projects} />
 
       </div>
     </>

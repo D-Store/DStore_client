@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { setUrl } from "../../lib/setUrl";
 import { ProjectType } from "../../types/project";
 import ProjectCard from "../ProjectCard";
-import { HotProjectListContainer } from "./HotProjectList.style";
+import { HotProjectListContainer } from "./NewProjectList.style";
 
 const HotProjectList = ({ projects }: any) => {
   const mapProjects =
