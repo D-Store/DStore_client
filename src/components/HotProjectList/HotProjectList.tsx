@@ -3,7 +3,7 @@ import { ProjectType } from "../../types/project";
 import SlideProjecctList from "../SlideProjectList";
 import { HotProjectContainer } from "./HotProjectList.style";
 
-const ProjectCard: React.FC = ({ projects }: any) => {
+const HotProjectList: React.FC = ({ projects }: any) => {
   return (
     <HotProjectContainer>
       <h1 className="hot-title">따끈따끈한 프로젝트</h1>
@@ -13,4 +13,4 @@ const ProjectCard: React.FC = ({ projects }: any) => {
   );
 };
 
-export default ProjectCard;
+export default HotProjectList;
