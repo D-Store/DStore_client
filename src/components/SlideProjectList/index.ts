@@ -1,1 +1,1 @@
-export {default} from "./SlideProjectList"
+export { default } from "./SlideProjectList";

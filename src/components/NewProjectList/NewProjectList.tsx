@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { setUrl } from "../../lib/setUrl";
 import { ProjectType } from "../../types/project";
 import ProjectCard from "../ProjectCard";
-import { HotProjectListContainer } from "./NewProjectList.style";
+import { NewProjectListContainer } from "./NewProjectList.style";
 
 const HotProjectList = ({ projects }: any) => {
   const mapProjects =
@@ -24,11 +24,11 @@ const HotProjectList = ({ projects }: any) => {
     });
 
   return (
-    <HotProjectListContainer>
-      <h1 className="hot-title">따끈따끈한 프로젝트</h1>
-      <p className="hot-desc">갓 올라온 프로젝트들을 확인해보세요!</p>
+    <NewProjectListContainer>
+      <h1 className="new-title">따끈따끈한 프로젝트</h1>
+      <p className="new-desc">갓 올라온 프로젝트들을 확인해보세요!</p>
       <div className="project-list">{mapProjects}</div>
-    </HotProjectListContainer>
+    </NewProjectListContainer>
   );
 };
 
