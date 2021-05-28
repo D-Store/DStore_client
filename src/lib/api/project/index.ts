@@ -1,7 +1,18 @@
 import { customAxios } from "../";
 
-export const getProjects = async () => {
-  const res: any = await customAxios.get(`/project/list`);
+interface IProps {
+  page: number;
+  size: number;
+  sort: string;
+}
 
-  return res;
+export const getProjects = async (data: IProps) => {
+  try {
+    const res: any = await customAxios.get(
+      `/project?page=${data.page}&size=${data.size}&sort=${data.sort}`
+    );
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
 };

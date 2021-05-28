@@ -23,13 +23,13 @@ const HotProjectList = ({ projects }: any) => {
       );
     });
 
-  return (
+  return projects ? (
     <HotProjectListContainer>
       <h1 className="hot-title">따끈따끈한 프로젝트</h1>
       <p className="hot-desc">갓 올라온 프로젝트들을 확인해보세요!</p>
       <div className="project-list">{mapProjects}</div>
     </HotProjectListContainer>
-  );
+  ) : null;
 };
 
 export default HotProjectList;

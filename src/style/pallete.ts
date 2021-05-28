@@ -11,4 +11,5 @@ export default {
   main_color: "#547AFF",
   background_color: "black",
   text_color: "#f2f2f2",
+  input_back: "#333333",
 };

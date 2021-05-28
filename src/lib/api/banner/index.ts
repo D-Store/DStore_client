@@ -12,7 +12,7 @@ export interface IGetBanner {
 }
 
 export const getBannerAPI = async () => {
-  const res = await customAxios(`/file/benner/locations`);
+  const res = await customAxios(`/file/locations/banner`);
 
   return res;
 };
