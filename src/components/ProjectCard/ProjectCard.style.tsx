@@ -4,25 +4,26 @@ import sizes from "../../style/sizes";
 
 interface IProjectCardContainer {
   src: string;
-  isSlide : boolean
+  isSlide: boolean;
 }
 
 export const ProjectCardContainer = styled.div<IProjectCardContainer>`
-  
-  width: ${sizes.max_width};
-  height: ${sizes.project_height} ;
-  width: ${(props) =>  props.isSlide && sizes.slide_width };
-  height: ${(props) =>  props.isSlide && sizes.slide_height };
+  width: ${props => (props.isSlide && sizes.slide_width) || sizes.max_width};
+  height: ${props =>
+    (props.isSlide && sizes.slide_height) || sizes.project_height};
   color: white;
   border-radius: 30px;
   overflow: hidden;
-  background-image: url(${(props) => props.src});
+  background-image: url(${props => props.src});
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center ;
+  background-position: center;
   display: flex;
   align-items: flex-end;
-  margin-bottom : ${(props) =>  !props.isSlide && "50px" };
+  @media screen and (max-width: 1080px) {
+    margin-bottom: 50px;
+  }
+  margin-bottom: ${props => !props.isSlide && "50px"};
   &:hover .project-info {
     height: 100%;
     span {

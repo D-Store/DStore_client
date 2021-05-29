@@ -4,7 +4,6 @@ import { setUrl } from "../../lib/setUrl";
 import { ProjectType } from "../../types/project";
 import {
   SlideProjectContainer,
-  SlideProjectColumn,
   SlideProjectRow,
   SlideProjectButton,
 } from "./SlideProjectList.style";
