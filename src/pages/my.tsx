@@ -34,7 +34,7 @@ const my: NextPage = () => {
               <LoginForm />
             </ModalPortal>
             로그인을 해셔야 이용하실 수 있습니다.
-            <button onClick={() => openModal()}>로그인</button>
+            <button onClick={openModal}>로그인</button>
           </>
         )}
       </div>

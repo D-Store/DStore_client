@@ -4,11 +4,12 @@ import {
   useSelector as useReduxSelector,
   TypedUseSelectorHook,
 } from "react-redux";
-
+import { reducer as toastrReducer } from "react-redux-toastr";
 import user from "./user";
 
 const rootReducer = combineReducers({
   user: user.reducer,
+  toastr: toastrReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

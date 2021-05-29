@@ -1,10 +1,12 @@
 import App, { AppContext, AppProps } from "next/app";
+import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
 import Head from "next/head";
 import PageTemplate from "../components/PageTemplate";
 import GlobalStyle from "../style/GlobalStyle";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { wrapper } from "../store";
+import ReduxToastr from "react-redux-toastr";
 
 const app = ({ Component, pageProps }: AppProps) => {
   return (
@@ -18,6 +20,16 @@ const app = ({ Component, pageProps }: AppProps) => {
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <title>디스토어 - 프로젝트 공유 서비스</title>
       </Head>
+      <ReduxToastr
+        timeOut={4000}
+        newestOnTop={false}
+        preventDuplicates
+        position="top-right"
+        transitionIn="fadeIn"
+        transitionOut="fadeOut"
+        progressBar
+        closeOnToastrClick
+      />
       <GlobalStyle />
       <PageTemplate>
         <Component {...pageProps} />

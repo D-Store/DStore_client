@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "./LoginForm.style";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { loginAPI } from "../../lib/api/user";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../store/user";
+import { AxiosResponse } from "axios";
+import { UserType } from "../../types/user";
+import { toastr } from "react-redux-toastr";
+import { setToken } from "../../lib/setToken";
 
 interface Form {
   email: string;
@@ -10,11 +16,19 @@ interface Form {
 
 const LoginForm = () => {
   const { register, handleSubmit } = useForm<Form>();
+  const dispatch = useDispatch();
 
   const onSubmit: SubmitHandler<Form> = async (data) => {
-    const res = await loginAPI(data);
+    const res: AxiosResponse<UserType> = await loginAPI(data);
 
-    console.log(res.data.tokens);
+    if (res.status === 400) {
+      toastr.error("인증 오류", "아이디나 비밀번호를 확인해보세요");
+    }
+
+    if (res.status === 200) {
+      const userInfo = res.data;
+      dispatch(userActions.setLoggedUser(userInfo));
+    }
   };
 
   return (
