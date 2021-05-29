@@ -4,10 +4,14 @@ import { ProjectType } from "../../types/project";
 import ProjectCard from "../ProjectCard";
 import { NewProjectListContainer } from "./NewProjectList.style";
 
-const HotProjectList = ({ projects }: any) => {
+interface IProps {
+  projects: ProjectType[];
+}
+
+const HotProjectList: React.FC<IProps> = ({ projects }) => {
   const mapProjects =
     projects &&
-    projects.map((project: ProjectType) => {
+    projects.map((project) => {
       return (
         <ProjectCard
           key={project.id}

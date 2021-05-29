@@ -18,8 +18,13 @@ const index: NextPage = ({ banners, projects }: any) => {
       <div>
         <Banner banners={banners} />
         <CategoryList />
-        <HotProjectList projects={projects} />
-        <NewProjectList projects={projects} />
+        <h1>등록되어 있는 프로젝트가 없습니다.</h1>
+        {projects && (
+          <>
+            <HotProjectList projects={projects} />
+            <NewProjectList projects={projects} />
+          </>
+        )}
       </div>
     </>
   );
@@ -28,12 +33,14 @@ const index: NextPage = ({ banners, projects }: any) => {
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     try {
-      const bannerRes: any = await getBannerAPI();
-      const projectRes: any = await getProjects({
-        page: 0,
-        size: 4,
-        sort: "id,desc",
-      });
+      const [bannerRes, projectRes]: any = await Promise.all([
+        getBannerAPI(),
+        getProjects({
+          page: 0,
+          size: 4,
+          sort: "id,desc",
+        }),
+      ]);
 
       return {
         props: {

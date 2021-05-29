@@ -4,12 +4,15 @@ import { setUrl } from "../../lib/setUrl";
 import { ProjectType } from "../../types/project";
 import {
   SlideProjectContainer,
-  SlideProjectColumn,
   SlideProjectRow,
   SlideProjectButton,
 } from "./SlideProjectList.style";
 
-const HotProjectList = ({ projects }: any) => {
+interface IProps {
+  projects: ProjectType[];
+}
+
+const HotProjectList: React.FC<IProps> = ({ projects }) => {
   return (
     <SlideProjectContainer>
       <SlideProjectButton>왼쪽</SlideProjectButton>

@@ -1,15 +1,19 @@
+import axios from "axios";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import LoginForm from "../components/LoginForm";
 import useModal from "../hooks/useModal";
-import { useSelector } from "../store";
+import { useSelector, wrapper } from "../store";
+import { UserState } from "../types/reduxState";
+import { UserType } from "../types/user";
 
-const my: NextPage = () => {
+interface IProps {
+  user: UserState;
+}
+const my: NextPage<IProps> = ({ user }) => {
   const { openModal, ModalPortal } = useModal();
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     openModal();
@@ -27,7 +31,11 @@ const my: NextPage = () => {
         }}
       >
         {user.isLoggedIn ? (
-          <>내 정보</>
+          <>
+            내 정보
+            <h1>{user.name}</h1>
+            <img src={user.profileImage} alt={`${user.name}'s profile image`} />
+          </>
         ) : (
           <>
             <ModalPortal>
@@ -41,4 +49,15 @@ const my: NextPage = () => {
     </>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async (context) => {
+    return {
+      props: {
+        user: context.store.getState().user,
+      },
+    };
+  }
+);
+
 export default my;

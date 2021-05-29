@@ -3,7 +3,11 @@ import { ProjectType } from "../../types/project";
 import SlideProjecctList from "../SlideProjectList";
 import { HotProjectContainer } from "./HotProjectList.style";
 
-const HotProjectList: React.FC = ({ projects }: any) => {
+interface IProps {
+  projects: ProjectType[];
+}
+
+const HotProjectList: React.FC<IProps> = ({ projects }) => {
   return (
     <HotProjectContainer>
       <h1 className="hot-title">따끈따끈한 프로젝트</h1>

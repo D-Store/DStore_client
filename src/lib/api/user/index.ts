@@ -1,5 +1,7 @@
 import { customAxios } from "..";
 import { toastr } from "react-redux-toastr";
+import { UserType } from "../../../types/user";
+import { AxiosResponse } from "axios";
 
 interface IProps {
   email: string;
@@ -11,7 +13,19 @@ export const loginAPI = async (data: IProps) => {
     const res = await customAxios.post(`/auth/login`, data);
     return res;
   } catch (error) {
-    toastr.error("에러가 발생했습니다!", "서버 오류");
+    return error.response;
+  }
+};
+
+export const meAPI = async (token: string) => {
+  try {
+    const res = await customAxios.get<UserType>(`/user/me`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return res;
+  } catch (error) {
     return error.response;
   }
 };

@@ -3,9 +3,10 @@ import { UserState } from "../types/reduxState";
 import { UserType } from "../types/user";
 
 const initialState: UserState = {
-  id: "",
+  id: 0,
   name: "",
   profileImage: "",
+  follow: false,
   isLoggedIn: false,
 };
 
@@ -15,6 +16,7 @@ const user = createSlice({
   reducers: {
     setLoggedUser(state, action: PayloadAction<UserType>) {
       state = { ...action.payload, isLoggedIn: true };
+
       return state;
     },
     initUser(state) {
