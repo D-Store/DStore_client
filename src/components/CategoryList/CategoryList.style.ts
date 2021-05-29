@@ -20,10 +20,10 @@ export const CategoryContainer = styled.div`
 `;
 
 export const CategoryContent = styled.div`
-  width: 1200px;
+  width: 100%;
   height: 200px;
   display: flex;
-  justify-content: space-between ;
+  justify-content: space-between;
   position: relative;
 `;
 
@@ -34,11 +34,11 @@ export const CategoryItem = styled.div`
   user-select: none;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
-  @media screen and (max-width: 955px) {
-      width: 140px;
+  @media screen and (max-width: 950px) {
+    width: 140px;
     height: 90px;
-    border-radius:25px ;
-    background-color: #333333 ;
+    border-radius: 25px;
+    background-color: #333333;
   }
   &:hover a {
     color: ${pallete.main_color};
@@ -52,9 +52,9 @@ export const CategoryItem = styled.div`
     color: #d4d4d4;
     left: 24;
     text-decoration: none;
-  @media screen and (max-width: 955px) {
-    font-size:25px;
-  }
+    @media screen and (max-width: 950px) {
+      font-size: 25px;
+    }
   }
   .icon {
     width: 240px;
@@ -62,8 +62,8 @@ export const CategoryItem = styled.div`
     cursor: pointer;
     margin-left: auto;
     margin-right: auto;
-    @media screen and (max-width: 955px) {
-        display: none;
+    @media screen and (max-width: 950px) {
+      display: none;
     }
   }
 `;
