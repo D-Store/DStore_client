@@ -35,7 +35,7 @@ export const CategoryItem = styled.div`
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   @media screen and (max-width: 950px) {
-    width: 140px;
+    max-width: 140px;
     height: 90px;
     border-radius: 25px;
     background-color: #333333;
