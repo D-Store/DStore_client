@@ -9,7 +9,7 @@ import {
   SlideProjectButton,
 } from "./SlideProjectList.style";
 
-const HotProjectList = ({ projects }: any) => {
+const SlideProjectList = ({ projects }: any) => {
   return (
     <SlideProjectContainer>
       <SlideProjectButton>왼쪽</SlideProjectButton>
@@ -36,4 +36,4 @@ const HotProjectList = ({ projects }: any) => {
   );
 };
 
-export default HotProjectList;
+export default SlideProjectList;
