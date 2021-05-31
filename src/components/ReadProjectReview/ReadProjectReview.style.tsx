@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import sizes from "../../style/sizes";
 import pallete from "../../style/pallete";
+import Like from "../../public/static/svg/Like.svg";
+import UnLike from "../../public/static/svg/UnLike.svg";
 
 interface IPropsProjectReviewType {
   isLike: boolean;
@@ -76,12 +78,10 @@ export const ReadProjectReviewItem = styled.div<IPropsProjectReviewType>`
     background-color: ${pallete.input_back};
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    img {
-      width: 60px;
-      height: 60px;
-      background-color: ${props => props.isLike && "red"};
+    path {
+      fill: ${props => (props.isLike && "rgb(238, 85, 85)") || "black"};
     }
     div {
       font-size: ${sizes.mideum_font};

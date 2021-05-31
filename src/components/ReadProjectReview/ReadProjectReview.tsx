@@ -1,5 +1,5 @@
 import React from "react";
-import like from "../../public/static/image/like.png";
+import Like from "../../public/static/svg/Like.svg";
 import {
   ReadProjectReviewContainer,
   ReadProjectReviewForm,
@@ -22,10 +22,10 @@ const ProjectReview: React.FC<IProps> = ({ isLike }) => {
         리뷰 내용
       </div>
       <div className="isLike">
-        <img src={like} alt="" />
+        <Like />
         <div>
           <div>좋아요</div>
-          누르지 않음
+          {isLike ? <div>누름</div> : <div>누르지 않음</div>}
         </div>
       </div>
     </ReadProjectReviewItem>
