@@ -8,10 +8,10 @@ interface IProps {
   projects: ProjectType[];
 }
 
-const HotProjectList: React.FC<IProps> = ({ projects }) => {
+const NewProjectList: React.FC<IProps> = ({ projects }) => {
   const mapProjects =
     projects &&
-    projects.map((project) => {
+    projects.map(project => {
       return (
         <ProjectCard
           key={project.id}
@@ -37,4 +37,4 @@ const HotProjectList: React.FC<IProps> = ({ projects }) => {
   );
 };
 
-export default HotProjectList;
+export default NewProjectList;

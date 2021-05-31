@@ -66,6 +66,7 @@ export const ReadProjectCardHeader = styled.div`
 `;
 
 export const ReadProjectCardHighLight = styled.div`
+  margin-bottom: 30px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -96,7 +97,7 @@ export const ReadProjectCardImgList = styled.div`
   overflow-y: auto;
   @media screen and (max-width: 1100px) {
     flex-direction: row;
-    min-width: 900px;
+    max-width: 900px;
   }
   .ListImg {
     border-radius: 10px;

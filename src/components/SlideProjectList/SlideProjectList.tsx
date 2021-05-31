@@ -14,7 +14,7 @@ interface IProps {
   projects: ProjectType[];
 }
 
-const HotProjectList: React.FC<IProps> = ({ projects }) => {
+const SlideProjectList: React.FC<IProps> = ({ projects }) => {
   return (
     <SlideProjectContainer>
       <SlideProjectButton>
@@ -50,4 +50,4 @@ const HotProjectList: React.FC<IProps> = ({ projects }) => {
   );
 };
 
-export default HotProjectList;
+export default SlideProjectList;
