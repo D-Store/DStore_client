@@ -8,7 +8,8 @@ interface IProjectCardContainer {
 }
 
 export const ProjectCardContainer = styled.div<IProjectCardContainer>`
-  width: ${props => (props.isSlide && sizes.slide_width) || sizes.max_width};
+  width: ${props =>
+    (props.isSlide && sizes.slide_width) || sizes.project_width};
   height: ${props =>
     (props.isSlide && sizes.slide_height) || sizes.project_height};
   color: white;
