@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { wrapper } from "../store";
 import ReduxToastr from "react-redux-toastr";
 import axios from "axios";
+import { useEffect } from "react";
 
 const app = ({ Component, pageProps }: AppProps) => {
   axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;

@@ -8,14 +8,14 @@ interface IProjectCardContainer {
 }
 
 export const ProjectCardContainer = styled.div<IProjectCardContainer>`
-  width: ${props =>
+  width: ${(props) =>
     (props.isSlide && sizes.slide_width) || sizes.project_width};
-  height: ${props =>
+  height: ${(props) =>
     (props.isSlide && sizes.slide_height) || sizes.project_height};
   color: white;
   border-radius: 30px;
   overflow: hidden;
-  background-image: url(${props => props.src});
+  background-image: url(${(props) => props.src});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -24,7 +24,7 @@ export const ProjectCardContainer = styled.div<IProjectCardContainer>`
   @media screen and (max-width: 1080px) {
     margin-bottom: 50px;
   }
-  margin-bottom: ${props => !props.isSlide && "50px"};
+  margin-bottom: ${(props) => !props.isSlide && "50px"};
   &:hover .project-info {
     height: 100%;
     span {
@@ -33,7 +33,7 @@ export const ProjectCardContainer = styled.div<IProjectCardContainer>`
       text-overflow: clip;
       overflow-y: auto;
     }
-    button {
+    a {
       position: absolute;
       display: flex;
       bottom: 10px;
@@ -45,6 +45,7 @@ export const ProjectCardContainer = styled.div<IProjectCardContainer>`
       background-color: ${pallete.main_color};
       color: ${pallete.text_color};
       cursor: pointer;
+      text-decoration: none;
     }
   }
 `;
@@ -69,7 +70,7 @@ export const ProjectInfo = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  & > button {
+  & > a {
     display: none;
   }
 `;

@@ -28,6 +28,7 @@ const HotProjectList: React.FC<IProps> = ({ projects }) => {
                 {key < 4 && (
                   <ProjectCard
                     key={project.id}
+                    id={project.id}
                     title={project.title}
                     content={project.content}
                     thumnail={
