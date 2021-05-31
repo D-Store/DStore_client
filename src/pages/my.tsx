@@ -7,7 +7,10 @@ import LoginForm from "../components/LoginForm";
 import useModal from "../hooks/useModal";
 import { useSelector, wrapper } from "../store";
 import { UserState } from "../types/reduxState";
-import { UserType } from "../types/user";
+import allCookies from "next-cookies";
+import styled from "styled-components";
+import sizes from "../style/sizes";
+import pallete from "../style/pallete";
 
 interface IProps {
   user: UserState;
@@ -41,8 +44,10 @@ const my: NextPage<IProps> = ({ user }) => {
             <ModalPortal>
               <LoginForm />
             </ModalPortal>
-            로그인을 해셔야 이용하실 수 있습니다.
-            <button onClick={openModal}>로그인</button>
+            <NotLoggedInPage>
+              <h1>😓로그인을 하셔야 이용하실 수 있습니다.</h1>
+              <button onClick={openModal}>로그인</button>
+            </NotLoggedInPage>
           </>
         )}
       </div>
@@ -50,8 +55,33 @@ const my: NextPage<IProps> = ({ user }) => {
   );
 };
 
+export const NotLoggedInPage = styled.div`
+  h1 {
+    font-size: ${sizes.big_font};
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
+  button {
+    border-radius: 5px;
+    width: 100px;
+    font-size: ${sizes.mideum_font};
+    font-family: 500;
+    padding: 16px;
+    background-color: ${pallete.main_color};
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+`;
+
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
+    axios.defaults.headers.Authorization = "";
+    const cookie = context.req ? allCookies(context).access_token : "";
+    if (context.req && cookie) {
+      axios.defaults.headers.Authorization = `Bearer ${cookie}`;
+    }
+
     return {
       props: {
         user: context.store.getState().user,

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { NextPage } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
@@ -8,6 +9,7 @@ import SlideProjectList from "../components/SlideProjectList";
 import { getBannerAPI } from "../lib/api/banner";
 import { getProjects } from "../lib/api/project";
 import { wrapper } from "../store";
+import allCookies from "next-cookies";
 
 const index: NextPage = ({ banners, projects }: any) => {
   return (
@@ -32,7 +34,13 @@ const index: NextPage = ({ banners, projects }: any) => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  async ({ store }) => {
+  async (context) => {
+    axios.defaults.headers.Authorization = "";
+    const cookie = context.req ? allCookies(context).access_token : "";
+    if (context.req && cookie) {
+      axios.defaults.headers.Authorization = `Bearer ${cookie}`;
+    }
+
     try {
       const [bannerRes, projectRes]: any = await Promise.all([
         getBannerAPI(),

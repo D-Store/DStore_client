@@ -1,7 +1,5 @@
-import { customAxios } from "..";
-import { toastr } from "react-redux-toastr";
 import { UserType } from "../../../types/user";
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 
 interface IProps {
   email: string;
@@ -10,20 +8,16 @@ interface IProps {
 
 export const loginAPI = async (data: IProps) => {
   try {
-    const res = await customAxios.post(`/auth/login`, data);
+    const res = await axios.post(`/auth/login`, data);
     return res;
   } catch (error) {
     return error.response;
   }
 };
 
-export const meAPI = async (token: string) => {
+export const meAPI = async () => {
   try {
-    const res = await customAxios.get<UserType>(`/user/me`, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const res = await axios.get<UserType>(`/user/me`);
     return res;
   } catch (error) {
     return error.response;
