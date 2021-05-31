@@ -37,7 +37,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
         getBannerAPI(),
         getProjects({
           page: 0,
-          size: 4,
+          size: 10,
           sort: "id,desc",
         }),
       ]);
