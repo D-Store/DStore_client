@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import ReadProject from "../components/ReadProject";
 
 const project: NextPage = () => {
   return (
@@ -7,6 +8,7 @@ const project: NextPage = () => {
       <Head>
         <title>메인 | 디스토어</title>
       </Head>
+      <ReadProject />
     </>
   );
 };
