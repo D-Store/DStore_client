@@ -1,6 +1,8 @@
 import React from "react";
 import ProjectCard from "../ProjectCard";
 import { setUrl } from "../../lib/setUrl";
+import SlideL from "../../public/static/svg/SlideL.svg";
+import SlideR from "../../public/static/svg/SlideR.svg";
 import { ProjectType } from "../../types/project";
 import {
   SlideProjectContainer,
@@ -15,7 +17,9 @@ interface IProps {
 const HotProjectList: React.FC<IProps> = ({ projects }) => {
   return (
     <SlideProjectContainer>
-      <SlideProjectButton>왼쪽</SlideProjectButton>
+      <SlideProjectButton>
+        <SlideL />
+      </SlideProjectButton>
       <SlideProjectRow>
         {projects &&
           projects.map((project: ProjectType, key: number) => {
@@ -38,7 +42,9 @@ const HotProjectList: React.FC<IProps> = ({ projects }) => {
             );
           })}
       </SlideProjectRow>
-      <SlideProjectButton>오른쪽</SlideProjectButton>
+      <SlideProjectButton>
+        <SlideR />
+      </SlideProjectButton>
     </SlideProjectContainer>
   );
 };

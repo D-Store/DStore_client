@@ -18,12 +18,13 @@ const index: NextPage = ({ banners, projects }: any) => {
       <div>
         <Banner banners={banners} />
         <CategoryList />
-        <h1>등록되어 있는 프로젝트가 없습니다.</h1>
-        {projects && (
+        {projects ? (
           <>
             <HotProjectList projects={projects} />
             <NewProjectList projects={projects} />
           </>
+        ) : (
+          <h1>등록되어 있는 프로젝트가 없습니다.</h1>
         )}
       </div>
     </>
