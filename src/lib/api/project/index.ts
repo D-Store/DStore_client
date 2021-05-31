@@ -1,5 +1,4 @@
-import { customAxios } from "../";
-
+import axios from "axios";
 interface IProps {
   page: number;
   size: number;
@@ -8,7 +7,7 @@ interface IProps {
 
 export const getProjects = async (data: IProps) => {
   try {
-    const res: any = await customAxios.get(
+    const res: any = await axios.get(
       `/project?page=${data.page}&size=${data.size}&sort=${data.sort}`
     );
     return res;

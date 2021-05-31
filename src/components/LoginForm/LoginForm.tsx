@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { loginAPI, meAPI } from "../../lib/api/user";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../store/user";
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { toastr } from "react-redux-toastr";
 import { setToken } from "../../lib/setToken";
 import { UserType } from "../../types/user";
@@ -41,9 +41,10 @@ const LoginForm = () => {
     if (res.status === 200) {
       const { accessToken, refreshToken } = res.data.tokens;
       setToken(accessToken, refreshToken);
-      const userResponse: AxiosResponse<MeResponseType> = await meAPI(
-        `Bearer ${accessToken}`
-      );
+
+      const userResponse: AxiosResponse<MeResponseType> = await meAPI();
+      console.log(userResponse);
+
       const userInfo = userResponse.data.user;
       dispatch(userActions.setLoggedUser(userInfo));
     }
