@@ -1,42 +1,51 @@
-import { HYDRATE, createWrapper, MakeStore } from "next-redux-wrapper";
-import { configureStore, combineReducers, AnyAction } from "@reduxjs/toolkit";
 import {
-  useSelector as useReduxSelector,
-  TypedUseSelectorHook,
-} from "react-redux";
+  createStore,
+  applyMiddleware,
+  combineReducers,
+  AnyAction,
+} from "redux";
+import { HYDRATE, createWrapper } from "next-redux-wrapper";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+
+import serverReducer from "./server";
+import userReducer from "./user";
 import { reducer as toastrReducer } from "react-redux-toastr";
-import user from "./user";
 
 const rootReducer = combineReducers({
-  user: user.reducer,
+  server: serverReducer,
+  user: userReducer,
   toastr: toastrReducer,
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
-
-let initialRootState: RootState;
-
-const reducer = (state: any, action: AnyAction) => {
-  if (action.payload === HYDRATE) {
-    if (state === initialRootState) {
+const reducer = (state: RootState | undefined, action: AnyAction) => {
+  switch (action.type) {
+    case HYDRATE:
+      if (state?.server.isServerRendered) {
+        return { ...state };
+      }
       return {
         ...state,
         ...action.payload,
+        server: { isServerRendered: true },
       };
+    default: {
+      return rootReducer(state, action);
     }
-    return state;
   }
-  return rootReducer(state, action);
 };
 
-const initStore: MakeStore = () => {
-  const store = configureStore({
-    reducer,
-    devTools: process.env.NODE_ENV === "development" ? true : false,
-  });
-  initialRootState = store.getState();
-  return store;
+export type RootState = ReturnType<typeof rootReducer>;
+
+const bindMiddleware = (middleware: any) => {
+  if (process.env.NODE_ENV !== "production") {
+    return composeWithDevTools(applyMiddleware(...middleware));
+  }
+  return applyMiddleware(...middleware);
 };
 
-export const wrapper = createWrapper(initStore);
-export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
+const configureStore = () => {
+  return createStore(reducer, bindMiddleware([thunk]));
+};
+
+export const wrapper = createWrapper(configureStore);

@@ -1,5 +1,5 @@
 import { UserType } from "../../../types/user";
-import axios, { AxiosResponse } from "axios";
+import customAxios from "../../customApi";
 
 interface IProps {
   email: string;
@@ -8,16 +8,16 @@ interface IProps {
 
 export const loginAPI = async (data: IProps) => {
   try {
-    const res = await axios.post(`/auth/login`, data);
+    const res = await customAxios.post(`/auth/login`, data);
     return res;
   } catch (error) {
     return error.response;
   }
 };
 
-export const meAPI = async () => {
+export const meAPI = async (token: string) => {
   try {
-    const res = await axios.get<UserType>(`/user/me`);
+    const res = await customAxios.get<UserType>(`/user/me`);
     return res;
   } catch (error) {
     return error.response;

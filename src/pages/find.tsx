@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import Cookie from "js-cookie";
 
 const find: NextPage = () => {
   return (
