@@ -29,6 +29,6 @@ const index: NextPage = ({ banners, projects }: any) => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps((context) => {});
+export const getServerSideProps = wrapper.getServerSideProps(context => {});
 
 export default index;

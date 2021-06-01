@@ -12,7 +12,7 @@ export const ReadProjectCardHeader = styled.div`
     "category profile"
     "title profile"
     "title info";
-  grid-template-columns: 900px 1fr;
+  grid-template-columns: minmax(min-content, 900px) 1fr;
   .category {
     grid-area: category;
     width: 100%;
@@ -43,7 +43,7 @@ export const ReadProjectCardHeader = styled.div`
   }
   .title {
     grid-area: title;
-    width: 100%;
+    max-width: 900px;
     font-size: ${sizes.title_font};
     font-weight: bold;
     display: flex;
@@ -77,8 +77,8 @@ export const ReadProjectCardHighLight = styled.div`
     background-size: cover;
     background-position: center;
     border-radius: 15px;
-    min-width: 900px;
-    min-height: 506.25px;
+    width: 100%;
+    height: 506.25px;
     max-width: 900px;
     max-height: 506.25px;
   }
