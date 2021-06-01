@@ -5,15 +5,12 @@ import Banner from "../components/Banner";
 import CategoryList from "../components/CategoryList/index";
 import HotProjectList from "../components/HotProjectList";
 import NewProjectList from "../components/NewProjectList";
-import { getBannerPromise } from "../lib/promiseDispatch";
+import { getBannerPromise, getProjectsPromise } from "../lib/promiseDispatch";
 import { useTypedSelector, wrapper } from "../store";
 
 const index: NextPage = () => {
-  const {
-    data: banners,
-    error,
-    loading,
-  } = useTypedSelector((state) => state.banner);
+  const { data: banners } = useTypedSelector((state) => state.banner);
+  const { data: projects } = useTypedSelector((state) => state.project);
 
   return (
     <>
@@ -22,7 +19,7 @@ const index: NextPage = () => {
       </Head>
       <div>
         <Banner banners={banners} />
-        {/* <CategoryList />
+        <CategoryList />
         {projects ? (
           <>
             <HotProjectList projects={projects} />
@@ -30,7 +27,7 @@ const index: NextPage = () => {
           </>
         ) : (
           <h1>등록되어 있는 프로젝트가 없습니다.</h1>
-        )} */}
+        )}
       </div>
     </>
   );
@@ -38,7 +35,7 @@ const index: NextPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
-    await Promise.all([getBannerPromise(context)]);
+    await Promise.all([getBannerPromise(context), getProjectsPromise(context)]);
   }
 );
 

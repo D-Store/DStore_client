@@ -1,17 +1,17 @@
-import axios from "axios";
+import { customAxios } from "../../customApi";
 interface IProps {
   page: number;
   size: number;
   sort: string;
 }
 
-export const getProjects = async (data: IProps) => {
+export const getProjectsAPI = async (data: IProps) => {
   try {
-    const res: any = await axios.get(
+    const res: any = await customAxios.get(
       `/project?page=${data.page}&size=${data.size}&sort=${data.sort}`
     );
     return res;
   } catch (error) {
-    console.log(error);
+    return error.response;
   }
 };

@@ -13,12 +13,14 @@ import reduxLogger from "next-redux-logger";
 import serverReducer from "./server";
 import userReducer from "./user";
 import bannerReducer from "./banner";
+import projectReducer from "./project";
 import { reducer as toastrReducer } from "react-redux-toastr";
 
 const rootReducer = combineReducers({
   server: serverReducer,
   user: userReducer,
   banner: bannerReducer,
+  project: projectReducer,
   toastr: toastrReducer,
 });
 

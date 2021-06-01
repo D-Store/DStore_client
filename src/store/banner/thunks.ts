@@ -4,7 +4,7 @@ import { BannerActions } from "./types";
 import { getBannerAsync } from "./actions";
 import { getBannerAPI } from "../../lib/api/banner";
 
-export const getBannerThunk = (): ThunkAction<
+export const getBannersThunk = (): ThunkAction<
   void,
   RootState,
   void,
@@ -13,12 +13,10 @@ export const getBannerThunk = (): ThunkAction<
   return async (dispatch) => {
     const { request, success, failure } = getBannerAsync;
 
-    const res = await getBannerAPI();
-    console.log(res.data.bannerLocation);
-
-    dispatch(request());
-
     try {
+      const res = await getBannerAPI();
+
+      dispatch(request());
       dispatch(success(res.data.bannerLocation));
     } catch (e) {
       dispatch(failure(e));
