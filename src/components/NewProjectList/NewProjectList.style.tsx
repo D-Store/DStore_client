@@ -4,11 +4,12 @@ import sizes from "../../style/sizes";
 export const NewProjectListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${sizes.max_width};
+  max-width: ${sizes.max_width};
   margin: 0 auto;
   /* justify-content: center;
   align-items: center; */
   .project-list {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

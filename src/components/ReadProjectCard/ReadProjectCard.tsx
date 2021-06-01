@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ReadProjectCardContainer,
   ReadProjectCardHeader,
@@ -8,14 +8,15 @@ import {
 import { setUrl } from "../../lib/setUrl";
 import { ProjectType } from "../../types/project";
 
-const ReadProjectCard: React.FC = () => {
+const ReadProjectCard = (project: any) => {
+  useEffect(() => console.log(project), []);
   return (
     <ReadProjectCardContainer>
       <ReadProjectCardHeader>
         <div className="category">카테고리</div>
         <div className="profile">
           <span className="profileImg"></span>
-          <span className="profileName">이름이름이름이름이름이름</span>
+          <span className="profileName">{project.title}</span>
         </div>
         <h1 className="title">
           제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목
