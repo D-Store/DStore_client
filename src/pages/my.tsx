@@ -78,6 +78,12 @@ export const NotLoggedInPage = styled.div`
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
     pageInit(context);
+
+    return {
+      props: {
+        login: context.store.getState().user.data.login,
+      },
+    };
   }
 );
 

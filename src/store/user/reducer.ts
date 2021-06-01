@@ -52,8 +52,8 @@ export default createReducer<IUserState, UserAction>(initialState, {
     loading: false,
     data: {
       ...state.data,
-      ...action.payload,
       login: true,
+      ...action.payload,
     },
   }),
   [GET_ME_FAILURE]: (state, action) => ({
