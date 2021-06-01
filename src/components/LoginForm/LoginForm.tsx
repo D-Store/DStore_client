@@ -4,8 +4,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { loginAPI, meAPI } from "../../lib/api/user";
 import { useDispatch } from "react-redux";
 import axios, { AxiosResponse } from "axios";
-import { toastr } from "react-redux-toastr";
+import Cookie from "js-cookie";
 import { UserType } from "../../types/user";
+import { getToken, setToken } from "../../lib/token";
+import { tryLoginThunk } from "../../store/user";
 
 interface Form {
   email: string;
@@ -34,13 +36,19 @@ interface IProps {
 }
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const onSubmit = async (loginInputData: Form) => {
     const loginResponse: AxiosResponse<LoginResponseType> = await loginAPI(
       loginInputData
     );
-    const { accessToken, refreshToken } = loginResponse.data.tokens;
+    const { accessToken, accessExpiredTime, refreshToken } =
+      loginResponse.data.tokens;
 
-    console.log(accessToken, refreshToken);
+    setToken(accessToken);
+    Cookie.set("refresh_token", refreshToken);
+    Cookie.set("access_expired", accessExpiredTime);
+
+    dispatch(tryLoginThunk());
   };
   const { register, handleSubmit } = useForm<Form>();
 

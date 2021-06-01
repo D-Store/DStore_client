@@ -15,7 +15,7 @@ export const loginAPI = async (data: IProps) => {
   }
 };
 
-export const meAPI = async (token: string) => {
+export const meAPI = async () => {
   try {
     const res = await customAxios.get<UserType>(`/user/me`);
     return res;

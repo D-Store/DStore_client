@@ -6,11 +6,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { wrapper } from "../store";
 import { NextComponentType } from "next";
-import cookies from "next-cookies";
-import { removeToken, setToken } from "../lib/token";
 import ReduxToastr from "react-redux-toastr";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
-import axios from "axios";
 
 const app: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
@@ -44,32 +41,6 @@ const app: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
       <div id="root-modal"></div>
     </>
   );
-};
-
-App.getInitialProps = async ({
-  Component,
-  ctx,
-}: AppContext): Promise<AppInitialProps> => {
-  let pageProps = {};
-
-  const isServer = typeof window === "undefined";
-
-  if (isServer) {
-    const allCookies = cookies(ctx);
-    const accessToken = allCookies["access_token"];
-    if (accessToken !== undefined) {
-      setToken(accessToken);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-    } else {
-      removeToken();
-    }
-  }
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-
-  return { pageProps };
 };
 
 export default wrapper.withRedux(app);

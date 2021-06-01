@@ -24,6 +24,7 @@ export default createReducer<IUserState, UserAction>(initialState, {
     loading: false,
     data: {
       ...state.data,
+      ...action.payload,
       login: true,
     },
   }),

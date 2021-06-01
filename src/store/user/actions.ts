@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { createAsyncAction, createAction } from "typesafe-actions";
-import { IUserState } from ".";
+import { UserType } from "../../types/user";
 
 export const TRY_LOGIN = "user/TRY_LOGIN" as const;
 export const TRY_LOGIN_SUCCESS = "user/TRY_LOGIN_SUCCESS" as const;
@@ -14,4 +14,4 @@ export const tryLoginAsync = createAsyncAction(
   TRY_LOGIN,
   TRY_LOGIN_SUCCESS,
   TRY_LOGIN_FAILURE
-)<void, void, AxiosError<ResponseType>>();
+)<void, UserType, AxiosError<ResponseType>>();

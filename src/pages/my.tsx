@@ -16,7 +16,9 @@ import { getToken } from "../lib/token";
 const my: NextPage = () => {
   const { openModal, ModalPortal } = useModal();
 
-  const isLoggedIn = useTypedSelector((state) => state.user.data.login);
+  const { name, profileImage, login } = useTypedSelector(
+    (state) => state.user.data
+  );
 
   useEffect(() => {
     openModal();
@@ -33,11 +35,11 @@ const my: NextPage = () => {
           textAlign: "center",
         }}
       >
-        {isLoggedIn ? (
+        {login ? (
           <>
             내 정보
             <h1>홍준혁</h1>
-            {/* <img src={user.profileImage} alt={`${user.name}'s profile image`} /> */}
+            <img src={profileImage} alt={`${name}'s profile image`} />
           </>
         ) : (
           <>

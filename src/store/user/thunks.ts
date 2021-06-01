@@ -1,5 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "..";
+import { meAPI } from "../../lib/api/user";
 import { tryLoginAsync } from "./actions";
 import { UserAction } from "./types";
 
@@ -14,8 +15,8 @@ export const tryLoginThunk = (): ThunkAction<
     dispatch(request());
 
     try {
-      //* 여기에 Login 로직을 추가해주세요
-      dispatch(success());
+      const me = await meAPI();
+      dispatch(success(me.data.user));
     } catch (e) {
       dispatch(failure(e));
     }

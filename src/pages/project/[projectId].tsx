@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import { customAxios } from "../../lib/customApi";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import ReadProjectCard from "../../components/ReadProjectCard";
@@ -10,8 +10,8 @@ const projectId: React.FC = () => {
   const tryProject = async () => {
     try {
       const router = useRouter();
-      const response = await axios.get(
-        `http://10.80.163.15:8080/project/${router.query.projectId}`
+      const response = await customAxios.get(
+        `/project/${router.query.projectId}`
       );
       console.log(response);
       return response;

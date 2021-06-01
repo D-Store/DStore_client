@@ -1,3 +1,4 @@
+import axios from "axios";
 import { NextPage } from "next";
 import { Context } from "next-redux-wrapper";
 import Head from "next/head";
@@ -5,6 +6,7 @@ import Banner from "../components/Banner";
 import CategoryList from "../components/CategoryList/index";
 import HotProjectList from "../components/HotProjectList";
 import NewProjectList from "../components/NewProjectList";
+import { pageInit } from "../lib/pageInit";
 import { getBannerPromise, getProjectsPromise } from "../lib/promiseDispatch";
 import { useTypedSelector, wrapper } from "../store";
 
@@ -35,6 +37,8 @@ const index: NextPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
+    pageInit(context);
+
     await Promise.all([getBannerPromise(context), getProjectsPromise(context)]);
   }
 );
