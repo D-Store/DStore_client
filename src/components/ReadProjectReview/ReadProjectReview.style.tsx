@@ -51,12 +51,12 @@ export const ReadProjectReviewList = styled.div`
 export const ReadProjectReviewItem = styled.div<IPropsProjectReviewType>`
   margin-top: 30px;
   width: 100%;
-  height: 150px;
+  min-height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   .profile {
-    width: 50px;
+    min-width: 50px;
     height: 50px;
     border-radius: 10px;
     background-color: ${pallete.input_back};
@@ -67,13 +67,13 @@ export const ReadProjectReviewItem = styled.div<IPropsProjectReviewType>`
   .content {
     padding: 1rem;
     width: 675px;
-    height: 100%;
+    min-height: 150px;
     border-radius: 20px;
     background-color: ${pallete.input_back};
   }
   .isLike {
     width: 125px;
-    height: 100%;
+    min-height: 150px;
     border-radius: 20px;
     background-color: ${pallete.input_back};
     display: flex;
