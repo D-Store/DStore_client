@@ -23,7 +23,7 @@ const ProjectCard: React.FC<IProps> = ({
       <ProjectInfo className="project-info">
         <h1>{title}</h1>
         <span>{content}</span>
-        <Link href={`project/${id}`}>
+        <Link href={`/project/${id}`}>
           <a>바로가기</a>
         </Link>
       </ProjectInfo>

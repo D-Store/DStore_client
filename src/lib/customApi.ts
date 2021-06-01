@@ -19,7 +19,7 @@ const addTokenErrorHandle = (err: AxiosError) => {
 
 export const customAxios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
-  timeout: 100000,
+  timeout: 10000,
 });
 
 customAxios.defaults.headers = {

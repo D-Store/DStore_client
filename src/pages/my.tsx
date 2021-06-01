@@ -5,19 +5,18 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "../components/LoginForm";
 import useModal from "../hooks/useModal";
-import { RootState, wrapper } from "../store";
+import { RootState, useTypedSelector, wrapper } from "../store";
 import { UserState } from "../types/reduxState";
 import styled from "styled-components";
 import sizes from "../style/sizes";
 import pallete from "../style/pallete";
 import { tryLoginThunk } from "../store/user";
+import { getToken } from "../lib/token";
 
-interface IProps {
-  token: string;
-  user: UserState;
-}
-const my: NextPage<IProps> = ({ token, user }) => {
+const my: NextPage = () => {
   const { openModal, ModalPortal } = useModal();
+
+  const isLoggedIn = useTypedSelector((state) => state.user.data.login);
 
   useEffect(() => {
     openModal();
@@ -34,22 +33,25 @@ const my: NextPage<IProps> = ({ token, user }) => {
           textAlign: "center",
         }}
       >
-        <>
-          <ModalPortal>
-            <LoginForm token={token} />
-          </ModalPortal>
-          <NotLoggedInPage>
-            <h1>😓로그인을 하셔야 이용하실 수 있습니다.</h1>
-            <button onClick={openModal}>로그인</button>
-          </NotLoggedInPage>
-        </>
-        {/* {user.isLoggedIn ? (
+        {isLoggedIn ? (
           <>
             내 정보
-            <h1>{user.name}</h1>
-            <img src={user.profileImage} alt={`${user.name}'s profile image`} />
+            <h1>홍준혁</h1>
+            {/* <img src={user.profileImage} alt={`${user.name}'s profile image`} /> */}
           </>
-        ) : ( compo here)}*/}
+        ) : (
+          <>
+            <>
+              <ModalPortal>
+                <LoginForm />
+              </ModalPortal>
+              <NotLoggedInPage>
+                <h1>😓로그인을 하셔야 이용하실 수 있습니다.</h1>
+                <button onClick={openModal}>로그인</button>
+              </NotLoggedInPage>
+            </>
+          </>
+        )}
       </div>
     </>
   );
@@ -75,7 +77,9 @@ export const NotLoggedInPage = styled.div`
 `;
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  async (context) => {}
+  async (context) => {
+    console.log(getToken());
+  }
 );
 
 export default my;

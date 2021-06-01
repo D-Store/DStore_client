@@ -15,34 +15,29 @@ interface IProps {
 }
 
 const SlideProjectList: React.FC<IProps> = ({ projects }) => {
+  const projectMap = projects.map((project: ProjectType, index: number) => {
+    return (
+      <ProjectCard
+        key={project.id}
+        id={project.id}
+        title={project.title}
+        content={project.content}
+        thumnail={
+          project.mainPhoto.thumnail
+            ? `http://` + setUrl(project.mainPhoto.fileLocation)
+            : "https://i1.wp.com/saedx.com/blog/wp-content/uploads/2019/01/saedx-blog-featured-70.jpg?fit=1200%2C500&ssl=1"
+        }
+        isSlide={true}
+      />
+    );
+  });
+
   return (
     <SlideProjectContainer>
       <SlideProjectButton>
         <SlideL />
       </SlideProjectButton>
-      <SlideProjectRow>
-        {projects &&
-          projects.map((project: ProjectType, key: number) => {
-            return (
-              <>
-                {key < 4 && (
-                  <ProjectCard
-                    key={project.id}
-                    id={project.id}
-                    title={project.title}
-                    content={project.content}
-                    thumnail={
-                      project.mainPhoto.thumnail
-                        ? `http://` + setUrl(project.mainPhoto.fileLocation)
-                        : "https://i1.wp.com/saedx.com/blog/wp-content/uploads/2019/01/saedx-blog-featured-70.jpg?fit=1200%2C500&ssl=1"
-                    }
-                    isSlide={true}
-                  />
-                )}
-              </>
-            );
-          })}
-      </SlideProjectRow>
+      <SlideProjectRow>{projectMap}</SlideProjectRow>
       <SlideProjectButton>
         <SlideR />
       </SlideProjectButton>

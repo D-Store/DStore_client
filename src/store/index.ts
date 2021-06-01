@@ -52,8 +52,9 @@ export const bindMiddleware = (middleware: any) => {
   return applyMiddleware(...middleware);
 };
 
+//reduxLogger
 const configureStore = () => {
-  return createStore(reducer, bindMiddleware([thunk, reduxLogger]));
+  return createStore(reducer, bindMiddleware([thunk]));
 };
 
 export const wrapper = createWrapper(configureStore);
