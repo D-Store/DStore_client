@@ -6,17 +6,23 @@ import CategoryList from "../components/CategoryList/index";
 import HotProjectList from "../components/HotProjectList";
 import NewProjectList from "../components/NewProjectList";
 import { getBannerPromise } from "../lib/promiseDispatch";
-import { wrapper } from "../store";
+import { useTypedSelector, wrapper } from "../store";
 
-const index: NextPage = ({ banners, projects }: any) => {
+const index: NextPage = () => {
+  const {
+    data: banners,
+    error,
+    loading,
+  } = useTypedSelector((state) => state.banner);
+
   return (
     <>
       <Head>
         <title>메인 | 디스토어</title>
       </Head>
       <div>
-        {/* <Banner banners={banners} />
-        <CategoryList />
+        <Banner banners={banners} />
+        {/* <CategoryList />
         {projects ? (
           <>
             <HotProjectList projects={projects} />

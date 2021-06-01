@@ -7,7 +7,7 @@ import {
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-// import reduxLogger from "../lib/middleware/reduxLogger";
+import { useSelector, TypedUseSelectorHook } from "react-redux";
 import reduxLogger from "next-redux-logger";
 
 import serverReducer from "./server";
@@ -39,9 +39,11 @@ const reducer = (state: RootState | undefined, action: AnyAction) => {
   }
 };
 
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+
 export type RootState = ReturnType<typeof rootReducer>;
 
-const bindMiddleware = (middleware: any) => {
+export const bindMiddleware = (middleware: any) => {
   if (process.env.NODE_ENV !== "production") {
     return composeWithDevTools(applyMiddleware(...middleware));
   }

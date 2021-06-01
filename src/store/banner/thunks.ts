@@ -14,12 +14,12 @@ export const getBannerThunk = (): ThunkAction<
     const { request, success, failure } = getBannerAsync;
 
     const res = await getBannerAPI();
-    console.log(res);
+    console.log(res.data.bannerLocation);
 
     dispatch(request());
 
     try {
-      dispatch(success());
+      dispatch(success(res.data.bannerLocation));
     } catch (e) {
       dispatch(failure(e));
     }
