@@ -1,4 +1,4 @@
-import axios from "axios";
+import { customAxios } from "../../customApi";
 
 export interface IGetBanner {
   httpStatus: string;
@@ -12,7 +12,10 @@ export interface IGetBanner {
 }
 
 export const getBannerAPI = async () => {
-  const res = await axios.get(`/file/locations/banner`);
-
-  return res;
+  try {
+    const res = await customAxios.get(`/file/locations/banner`);
+    return res;
+  } catch (e) {
+    return e.response;
+  }
 };

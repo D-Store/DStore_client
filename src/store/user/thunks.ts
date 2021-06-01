@@ -1,4 +1,3 @@
-import { HandleThunkActionCreator } from "react-redux";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "..";
 import { tryLoginAsync } from "./actions";

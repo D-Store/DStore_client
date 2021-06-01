@@ -5,6 +5,7 @@ import Banner from "../components/Banner";
 import CategoryList from "../components/CategoryList/index";
 import HotProjectList from "../components/HotProjectList";
 import NewProjectList from "../components/NewProjectList";
+import { getBannerPromise } from "../lib/promiseDispatch";
 import { wrapper } from "../store";
 
 const index: NextPage = ({ banners, projects }: any) => {
@@ -29,6 +30,10 @@ const index: NextPage = ({ banners, projects }: any) => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps((context) => {});
+export const getServerSideProps = wrapper.getServerSideProps(
+  async (context) => {
+    await Promise.all([getBannerPromise(context)]);
+  }
+);
 
 export default index;
