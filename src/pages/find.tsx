@@ -1,6 +1,8 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import Cookie from "js-cookie";
+import { wrapper } from "../store";
+import { pageInit } from "../lib/pageInit";
 
 const find: NextPage = () => {
   return (
@@ -12,5 +14,11 @@ const find: NextPage = () => {
     </>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async (context) => {
+    pageInit(context);
+  }
+);
 
 export default find;

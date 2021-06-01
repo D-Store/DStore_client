@@ -2,16 +2,13 @@ import axios from "axios";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "../components/LoginForm";
 import useModal from "../hooks/useModal";
 import { RootState, useTypedSelector, wrapper } from "../store";
-import { UserState } from "../types/reduxState";
 import styled from "styled-components";
 import sizes from "../style/sizes";
 import pallete from "../style/pallete";
-import { tryLoginThunk } from "../store/user";
-import { getToken } from "../lib/token";
+import { pageInit } from "../lib/pageInit";
 
 const my: NextPage = () => {
   const { openModal, ModalPortal } = useModal();
@@ -80,7 +77,7 @@ export const NotLoggedInPage = styled.div`
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
-    console.log(getToken());
+    pageInit(context);
   }
 );
 

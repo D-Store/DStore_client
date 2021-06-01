@@ -1,5 +1,12 @@
 import { createReducer } from "typesafe-actions";
-import { TRY_LOGIN, TRY_LOGIN_SUCCESS, TRY_LOGIN_FAILURE } from "./actions";
+import {
+  TRY_LOGIN,
+  TRY_LOGIN_SUCCESS,
+  TRY_LOGIN_FAILURE,
+  GET_ME,
+  GET_ME_SUCCESS,
+  GET_ME_FAILURE,
+} from "./actions";
 import { IUserState, UserAction } from "./types";
 
 export const initialState: IUserState = {
@@ -35,5 +42,22 @@ export default createReducer<IUserState, UserAction>(initialState, {
     data: {
       ...state.data,
     },
+  }),
+  [GET_ME]: (state, action) => ({
+    ...state,
+    loading: true,
+  }),
+  [GET_ME_SUCCESS]: (state, action) => ({
+    ...state,
+    loading: false,
+    data: {
+      ...state.data,
+      ...action.payload,
+      login: true,
+    },
+  }),
+  [GET_ME_FAILURE]: (state, action) => ({
+    ...state,
+    error: true,
   }),
 });
