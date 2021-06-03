@@ -77,7 +77,7 @@ export const NotLoggedInPage = styled.div`
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
-    pageInit(context);
+    await pageInit(context);
 
     return {
       props: {

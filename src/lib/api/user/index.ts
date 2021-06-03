@@ -23,3 +23,15 @@ export const meAPI = async () => {
     return error.response;
   }
 };
+
+export const refreshTokenAPI = async (refreshToken: string) => {
+  try {
+    const res = await customAxios.post("/auth/refresh", {
+      refresh: refreshToken,
+    });
+    return res;
+  } catch (error) {
+    console.log(error);
+    return error.response;
+  }
+};

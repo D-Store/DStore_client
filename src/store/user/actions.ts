@@ -24,4 +24,4 @@ export const tryGetMeAsync = createAsyncAction(
   GET_ME,
   GET_ME_SUCCESS,
   GET_ME_FAILURE
-)<void, UserType, AxiosError<ResponseType>>();
+)<void, UserType, void>();

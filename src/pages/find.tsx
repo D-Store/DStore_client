@@ -17,7 +17,7 @@ const find: NextPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
-    pageInit(context);
+    await pageInit(context);
   }
 );
 

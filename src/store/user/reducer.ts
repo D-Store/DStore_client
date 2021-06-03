@@ -39,9 +39,6 @@ export default createReducer<IUserState, UserAction>(initialState, {
     ...state,
     loading: false,
     error: true,
-    data: {
-      ...state.data,
-    },
   }),
   [GET_ME]: (state, action) => ({
     ...state,
@@ -58,6 +55,7 @@ export default createReducer<IUserState, UserAction>(initialState, {
   }),
   [GET_ME_FAILURE]: (state, action) => ({
     ...state,
+    loading: false,
     error: true,
   }),
 });

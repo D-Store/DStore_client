@@ -37,9 +37,7 @@ const index: NextPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
-    pageInit(context);
-
-    await Promise.all([getBannerPromise(context), getProjectsPromise(context)]);
+    await pageInit(context);
   }
 );
 

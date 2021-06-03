@@ -39,6 +39,7 @@ const app: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
         <Component {...pageProps} />
       </PageTemplate>
       <div id="root-modal"></div>
+      <div id="root-loader"></div>
     </>
   );
 };

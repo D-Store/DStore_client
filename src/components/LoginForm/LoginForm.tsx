@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "./LoginForm.style";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { loginAPI, meAPI } from "../../lib/api/user";
@@ -8,6 +8,8 @@ import Cookie from "js-cookie";
 import { UserType } from "../../types/user";
 import { getToken, setToken } from "../../lib/token";
 import { tryLoginThunk } from "../../store/user";
+import useLoader from "../../hooks/useLoader";
+import moment from "moment";
 
 interface Form {
   email: string;
@@ -36,19 +38,26 @@ interface IProps {
 }
 
 const LoginForm = () => {
+  const { startLoading, endLoading, LoaderPortal } = useLoader();
+
   const dispatch = useDispatch();
   const onSubmit = async (loginInputData: Form) => {
     const loginResponse: AxiosResponse<LoginResponseType> = await loginAPI(
       loginInputData
     );
+
     const { accessToken, accessExpiredTime, refreshToken } =
       loginResponse.data.tokens;
 
     setToken(accessToken);
+    const momentedExpireTime = moment(accessExpiredTime);
+    console.log(momentedExpireTime);
     Cookie.set("refresh_token", refreshToken);
-    Cookie.set("access_expired", accessExpiredTime);
+    Cookie.set("access_expired", momentedExpireTime);
 
+    startLoading();
     dispatch(tryLoginThunk());
+    endLoading();
   };
   const { register, handleSubmit } = useForm<Form>();
 
@@ -67,6 +76,7 @@ const LoginForm = () => {
       <div className="go-register">
         회원이 아니신가요? <span>회원가입</span>
       </div>
+      <LoaderPortal />
     </Container>
   );
 };

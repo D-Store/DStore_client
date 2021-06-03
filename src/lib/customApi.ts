@@ -1,10 +1,13 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import Cookies from "js-cookie";
 import { getToken, removeToken } from "./token";
 
 const addToken = async (
   config: AxiosRequestConfig
 ): Promise<AxiosRequestConfig> => {
   const token = getToken();
+
+  const accessExpire = Cookies.get("access_expired");
 
   if (token) {
     config.headers["Authorization"] = `Bearer ${token}`;
