@@ -9,11 +9,12 @@ import styled from "styled-components";
 import sizes from "../style/sizes";
 import pallete from "../style/pallete";
 import { pageInit } from "../lib/pageInit";
+import MyInfoCard from "../components/MyInfoCard";
 
 const my: NextPage = () => {
   const { openModal, ModalPortal } = useModal();
 
-  const { name, profileImage, login } = useTypedSelector(
+  const { name, profileImage, login, id } = useTypedSelector(
     (state) => state.user.data
   );
 
@@ -33,11 +34,7 @@ const my: NextPage = () => {
         }}
       >
         {login ? (
-          <>
-            내 정보
-            <h1>홍준혁</h1>
-            <img src={profileImage} alt={`${name}'s profile image`} />
-          </>
+          <MyInfoCard name={name} profile={profileImage}></MyInfoCard>
         ) : (
           <>
             <>

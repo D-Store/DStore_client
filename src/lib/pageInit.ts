@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import Cookies from "js-cookie";
 import moment from "moment";
 import cookies from "next-cookies";
@@ -36,8 +36,8 @@ export const pageInit = async (context: any) => {
     }
 
     await context.store.dispatch(tryGetMeThunk());
-    await Promise.all([getBannerPromise(context), getProjectsPromise(context)]);
   } else {
     removeToken();
   }
+  await Promise.all([getBannerPromise(context), getProjectsPromise(context)]);
 };

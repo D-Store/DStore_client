@@ -7,7 +7,6 @@ import CategoryList from "../components/CategoryList/index";
 import HotProjectList from "../components/HotProjectList";
 import NewProjectList from "../components/NewProjectList";
 import { pageInit } from "../lib/pageInit";
-import { getBannerPromise, getProjectsPromise } from "../lib/promiseDispatch";
 import { useTypedSelector, wrapper } from "../store";
 
 const index: NextPage = () => {
