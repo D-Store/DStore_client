@@ -7,8 +7,6 @@ const addToken = async (
 ): Promise<AxiosRequestConfig> => {
   const token = getToken();
 
-  const accessExpire = Cookies.get("access_expired");
-
   if (token) {
     config.headers["Authorization"] = `Bearer ${token}`;
   }
@@ -23,6 +21,7 @@ const addTokenErrorHandle = (err: AxiosError) => {
 export const customAxios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 10000,
+  withCredentials: true,
 });
 
 customAxios.defaults.headers = {

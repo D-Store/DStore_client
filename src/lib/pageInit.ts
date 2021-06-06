@@ -12,16 +12,16 @@ export const pageInit = async (context: any) => {
   const accessToken = allCookies["access_token"];
 
   if (accessToken !== undefined) {
-    const accessExpired = allCookies["access_expired"];
+    const accessExpired = Number(allCookies["access_expired"]);
 
-    const now = moment();
-
+    const now = Date.now();
     setToken(accessToken);
     axios.defaults.headers.common["Authorization"] = `${accessToken}`;
 
-    if (now.diff(moment(accessExpired), "minutes") < 0) {
+    if (now > accessExpired) {
       //* 토큰이 만료됨.
       const refreshTokenByCookie = allCookies["refresh_token"];
+
       const refreshResponse: any =
         refreshTokenByCookie && (await refreshTokenAPI(refreshTokenByCookie));
 

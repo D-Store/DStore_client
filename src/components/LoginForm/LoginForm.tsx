@@ -50,10 +50,9 @@ const LoginForm = () => {
       loginResponse.data.tokens;
 
     setToken(accessToken);
-    const momentedExpireTime = moment(accessExpiredTime);
-    console.log(momentedExpireTime);
+
     Cookie.set("refresh_token", refreshToken);
-    Cookie.set("access_expired", momentedExpireTime);
+    Cookie.set("access_expired", accessExpiredTime);
 
     startLoading();
     dispatch(tryLoginThunk());
