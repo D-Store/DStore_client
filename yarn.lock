@@ -6883,6 +6883,11 @@ through2@^2.0.0:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
+time-counting@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/time-counting/-/time-counting-2.0.1.tgz#d11ad0a1cda64fab6a8cebb3a6b5b63c32c62101"
+  integrity sha512-cAOTViq4ocJO7TlvhBqB2+htHQBROvwtrNDZqwdzGZBatInajhm6AzufHiQatXTU9mo79A9t2tjZw3OsS6BleA==
+
 timers-browserify@^2.0.4:
   version "2.0.12"
   resolved "https://registry.npmjs.org/timers-browserify/-/timers-browserify-2.0.12.tgz"

@@ -15,3 +15,12 @@ export const getProjectsAPI = async (data: IProps) => {
     return error.response;
   }
 };
+
+export const getProjectAPI = async (projectId: number) => {
+  try {
+    const res = await customAxios.get(`/project/${projectId}`);
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+};

@@ -7,27 +7,59 @@ import {
 } from "./ReadProjectCard.style";
 import { setUrl } from "../../lib/setUrl";
 import { ProjectType } from "../../types/project";
+import timeCounting from "time-counting";
 
-const ReadProjectCard = (project: any) => {
-  useEffect(() => console.log(project), []);
+interface IProps {
+  project: ProjectType;
+}
+
+const ReadProjectCard: React.FC<IProps> = ({ project }) => {
+  const {
+    id,
+    tags,
+    content,
+    createAt,
+    title,
+    users,
+    likeNum,
+    commentNum,
+    files,
+  } = project;
+
+  const mapTags = tags && tags.map((tag) => <li>{tag}</li>);
+
+  const mapFiles =
+    files &&
+    files.map((file) => {
+      console.log(file.fileLocation);
+      return (
+        <img src={setUrl("http://" + file.fileLocation)} alt={`${file.id}`} />
+      );
+    });
+
   return (
     <ReadProjectCardContainer>
       <ReadProjectCardHeader>
-        <div className="category">카테고리</div>
+        <div className="category">{mapTags}</div>
         <div className="profile">
           <span className="profileImg"></span>
-          <span className="profileName">{project.title}</span>
+          <span className="profileName">{title}</span>
         </div>
-        <h1 className="title">
-          제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목
-        </h1>
+        <h1 className="title">{title}</h1>
         <div className="info">
-          <span className="like">좋아요 6</span>
-          <span className="timeLine">2021.6.1 00.00</span>
-          <span className="review">리뷰 1</span>
+          <span className="like">좋아요 {likeNum}</span>
+          <span className="timeLine">
+            {timeCounting(createAt, {
+              lang: "ko",
+            })}
+          </span>
+          <span className="review">리뷰 {commentNum}</span>
         </div>
       </ReadProjectCardHeader>
-      <ReadProjectCardHighLight>
+      {mapFiles}
+      {/* <img src={mainPhoto.fileLocation} alt="" /> */}
+
+      {/* <ReadProjectCardHighLight>
         <div className="titleImg" />
         <ReadProjectCardImgList>
           <div className="ListImg select" />
@@ -37,7 +69,7 @@ const ReadProjectCard = (project: any) => {
           <div className="ListImg" />
           <div className="ListImg" />
         </ReadProjectCardImgList>
-      </ReadProjectCardHighLight>
+      </ReadProjectCardHighLight> */}
     </ReadProjectCardContainer>
   );
 };

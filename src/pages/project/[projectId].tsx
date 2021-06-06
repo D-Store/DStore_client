@@ -5,22 +5,16 @@ import Head from "next/head";
 import ReadProjectCard from "../../components/ReadProjectCard";
 import ReadProjectContent from "../../components/ReadProjectContent";
 import ReadProjectReview from "../../components/ReadProjectReview";
+import { wrapper } from "../../store";
+import { pageInit } from "../../lib/pageInit";
+import { getProjectAPI } from "../../lib/api/project";
+import { ProjectType } from "../../types/project";
 
-const projectId: React.FC = () => {
-  const tryProject = async () => {
-    try {
-      const router = useRouter();
-      const response = await customAxios.get(
-        `/project/${router.query.projectId}`
-      );
-      console.log(response);
-      return response;
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
-  };
-  const project = tryProject();
+interface IProps {
+  project: ProjectType;
+}
+
+const projectId: React.FC<IProps> = ({ project }) => {
   return (
     <>
       <Head>
@@ -32,5 +26,21 @@ const projectId: React.FC = () => {
     </>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async (context) => {
+    await pageInit(context);
+    const { projectId } = context.params;
+
+    const response = await getProjectAPI(Number(projectId));
+    console.log(response.data);
+
+    return {
+      props: {
+        project: response.data.project,
+      },
+    };
+  }
+);
 
 export default projectId;

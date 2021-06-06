@@ -1,12 +1,19 @@
 import styled from "styled-components";
 import pallete from "../../style/pallete";
 import sizes from "../../style/sizes";
+import Main from "../../public/static/image/main.png";
 
 export const MyInfoCardContainer = styled.section`
   .background {
     height: 300px;
     background-size: cover;
-    background-image: url("../../public/static/image/main.png");
+    /* background-image: url(${Main}); */
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 1) 35%,
+      rgba(0, 212, 255, 1) 100%
+    );
     position: relative;
     display: flex;
     align-items: flex-end;

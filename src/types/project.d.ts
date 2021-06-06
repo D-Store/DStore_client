@@ -10,6 +10,14 @@ export interface ProjectType {
     type: string;
     thumnail: false;
   };
+  files: [
+    {
+      id: number;
+      fileLocation: string;
+      type: string;
+      thumnail: number;
+    }
+  ];
   users: [
     {
       id: number;
@@ -18,4 +26,7 @@ export interface ProjectType {
       follow: boolean;
     }
   ];
+  likeState: boolean;
+  likeNum: number;
+  commentNum: number;
 }
