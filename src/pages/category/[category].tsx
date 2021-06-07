@@ -1,32 +1,35 @@
 import { useRouter } from "next/dist/client/router";
 import React from "react";
+import styled from "styled-components";
 import ProjectCard from "../../components/ProjectCard";
+import SearchProjectList from "../../components/SearchProjectList";
 import { getProjectsByCategodyAPI } from "../../lib/api/project";
 import { pageInit } from "../../lib/pageInit";
 import { wrapper } from "../../store";
+import sizes from "../../style/sizes";
 import { ProjectType } from "../../types/project";
 
 interface IProps {
   projects: ProjectType[];
 }
 
+const SearchTitle = styled.h1`
+  text-align: center;
+  font-weight: bold;
+  font-size: ${sizes.big_font};
+  margin-bottom: 20px;
+`;
+
 const Category: React.FC<IProps> = ({ projects }) => {
-  const mapProjects = projects.map((project) => {
-    return (
-      <ProjectCard
-        key={project.id}
-        id={project.id}
-        title={project.title}
-        content={project.content}
-        thumnail={project.mainPhoto.fileLocation}
-      />
-    );
-  });
   const { query } = useRouter();
   return (
     <>
-      <h1>{query.category}의 검색 결과</h1>
-      {projects.length === 0 ? <>프로젝트 없음</> : <>{mapProjects}</>}
+      <SearchTitle>{query.category}의 검색 결과</SearchTitle>
+      {projects.length === 0 ? (
+        <>프로젝트 없음</>
+      ) : (
+        <SearchProjectList projects={projects} />
+      )}
     </>
   );
 };
