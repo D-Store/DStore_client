@@ -24,3 +24,12 @@ export const getProjectAPI = async (projectId: number) => {
     return error.response;
   }
 };
+
+export const getCommentsAPI = async (projectId: number) => {
+  try {
+    const res = await customAxios.get(`/comment/${projectId}`);
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+};

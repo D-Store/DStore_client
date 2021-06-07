@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
-import Cookies from "js-cookie";
 import { getToken, removeToken } from "./token";
 
 const addToken = async (

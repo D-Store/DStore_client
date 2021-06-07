@@ -5,7 +5,7 @@ import Like from "../../public/static/svg/Like.svg";
 import UnLike from "../../public/static/svg/UnLike.svg";
 
 interface IPropsProjectReviewType {
-  isLike: boolean;
+  isLike?: boolean;
 }
 
 export const ReadProjectReviewContainer = styled.div`
@@ -81,7 +81,7 @@ export const ReadProjectReviewItem = styled.div<IPropsProjectReviewType>`
     justify-content: center;
     align-items: center;
     path {
-      fill: ${props => (props.isLike && "rgb(238, 85, 85)") || "black"};
+      fill: ${(props) => (props.isLike && "rgb(238, 85, 85)") || "black"};
     }
     div {
       font-size: ${sizes.mideum_font};

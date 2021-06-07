@@ -14,7 +14,7 @@ import MyInfoCard from "../components/MyInfoCard";
 const my: NextPage = () => {
   const { openModal, ModalPortal } = useModal();
 
-  const { name, profileImage, login, id } = useTypedSelector(
+  const { name, profileImage, login } = useTypedSelector(
     (state) => state.user.data
   );
 

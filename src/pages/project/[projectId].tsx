@@ -5,14 +5,16 @@ import ReadProjectContent from "../../components/ReadProjectContent";
 import ReadProjectReview from "../../components/ReadProjectReview";
 import { wrapper } from "../../store";
 import { pageInit } from "../../lib/pageInit";
-import { getProjectAPI } from "../../lib/api/project";
+import { getCommentsAPI, getProjectAPI } from "../../lib/api/project";
 import { ProjectType } from "../../types/project";
+import { CommentType } from "../../types/comment";
 
 interface IProps {
   project: ProjectType;
+  comments: CommentType[];
 }
 
-const projectId: React.FC<IProps> = ({ project }) => {
+const projectId: React.FC<IProps> = ({ project, comments }) => {
   return (
     <>
       <Head>
@@ -20,7 +22,7 @@ const projectId: React.FC<IProps> = ({ project }) => {
       </Head>
       <ReadProjectCard project={project} />
       <ReadProjectContent />
-      <ReadProjectReview />
+      <ReadProjectReview comments={comments} />
     </>
   );
 };
@@ -30,12 +32,15 @@ export const getServerSideProps = wrapper.getServerSideProps(
     await pageInit(context);
     const { projectId } = context.params;
 
-    const response = await getProjectAPI(Number(projectId));
-    console.log(response.data);
+    const projectResponse = await getProjectAPI(Number(projectId));
+    const commentsResponse = await getCommentsAPI(Number(projectId));
+
+    console.log(commentsResponse);
 
     return {
       props: {
-        project: response.data.project,
+        project: projectResponse.data.project,
+        comments: commentsResponse.data.comments,
       },
     };
   }

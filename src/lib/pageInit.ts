@@ -1,6 +1,5 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import moment from "moment";
 import cookies from "next-cookies";
 import { tryGetMeThunk } from "../store/user";
 import { refreshTokenAPI } from "./api/user";
