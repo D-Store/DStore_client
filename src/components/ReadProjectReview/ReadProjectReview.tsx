@@ -12,7 +12,7 @@ interface IProps {
   comments: CommentType[];
 }
 
-const ProjectReview: React.FC = ({ comments }) => {
+const ProjectReview: React.FC = () => {
   return (
     <ReadProjectReviewItem>
       <div className="profile" />
@@ -34,8 +34,24 @@ const ProjectReview: React.FC = ({ comments }) => {
 const ReadProjectReview: React.FC<IProps> = ({ comments }) => {
   const mapComments =
     comments &&
-    comments.map((comment) => {
-      <img src={comment.user.profileImage} alt="" />;
+    comments.map(comment => {
+      return (
+        <ReadProjectReviewItem>
+          <img
+            src={comment.user.profileImage}
+            alt="profile"
+            className="profile"
+          />
+          <div className="content">{comment.comment}</div>
+          <div className="isLike">
+            <Like />
+            <div>
+              <div>좋아요</div>
+              {/* {isLike ? <div>누름</div> : <div>누르지 않음</div>} */}
+            </div>
+          </div>
+        </ReadProjectReviewItem>
+      );
     });
 
   console.log(comments);
@@ -45,10 +61,7 @@ const ReadProjectReview: React.FC<IProps> = ({ comments }) => {
         <textarea></textarea>
         <button>작성</button>
       </ReadProjectReviewForm>
-      <ReadProjectReviewList>
-        <ProjectReview isLike={false} />
-        <ProjectReview isLike={true} />
-      </ReadProjectReviewList>
+      <ReadProjectReviewList>{mapComments}</ReadProjectReviewList>
     </ReadProjectReviewContainer>
   );
 };
