@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { customAxios } from "../../lib/customApi";
-import { useRouter } from "next/router";
+import React from "react";
 import Head from "next/head";
 import ReadProjectCard from "../../components/ReadProjectCard";
 import ReadProjectContent from "../../components/ReadProjectContent";
@@ -28,7 +26,7 @@ const projectId: React.FC<IProps> = ({ project }) => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  async (context) => {
+  async (context: any) => {
     await pageInit(context);
     const { projectId } = context.params;
 

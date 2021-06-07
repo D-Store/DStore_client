@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import pallete from "../../style/pallete";
 import sizes from "../../style/sizes";
 
 export const ReadProjectCardContainer = styled.div`
@@ -19,6 +20,16 @@ export const ReadProjectCardHeader = styled.div`
     font-size: ${sizes.small_font};
     display: flex;
     align-items: center;
+    list-style: none;
+    color: ${pallete.blue};
+    font-weight: bold;
+    font-size: ${sizes.mideum_font};
+    li {
+      margin-right: 10px;
+      &::before {
+        content: "#";
+      }
+    }
   }
   .profile {
     grid-area: profile;

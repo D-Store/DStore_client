@@ -17,25 +17,25 @@ const CategoryList: React.FC = () => {
         <h1>카테고리별 프로젝트</h1>
         <p>각 플렛폼 별로 프로젝트를 보세요!</p>
         <CategoryContent>
-          <Link href="/web">
+          <Link href="/category/web">
             <CategoryItem>
               <a>웹</a>
               <img src={web} className="icon" />
             </CategoryItem>
           </Link>
-          <Link href="/app">
+          <Link href="/category/app">
             <CategoryItem>
               <a>앱</a>
               <img src={app} className="icon" />
             </CategoryItem>
           </Link>
-          <Link href="/game">
+          <Link href="/category/game">
             <CategoryItem>
               <a>게임</a>
               <img src={game} className="icon" />
             </CategoryItem>
           </Link>
-          <Link href="/embedded">
+          <Link href="/category/embedded">
             <CategoryItem>
               <a>임베디드</a>
               <img src={embedded} className="icon" />

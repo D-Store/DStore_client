@@ -3,7 +3,7 @@ export default {
   //   orange: "#FFC282",
   //   yellow: "#FCFFB0",
   //   green: "#E2FFAF",
-  //   blue: "#AEE4FF",
+  blue: "rgba(0,103,188,.85)",
   //   navy: "#B5C7ED",
   //   gray: "#E5E5E5",
   //   deep_red: "#F35456",
