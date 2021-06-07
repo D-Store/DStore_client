@@ -26,16 +26,31 @@ const ReadProjectCard: React.FC<IProps> = ({ project }) => {
     files,
   } = project;
 
-  const mapTags = tags && tags.map((tag) => <li>{tag}</li>);
+  const mapTags = tags && tags.map(tag => <li>{tag}</li>);
+  let titleKey = 0;
 
   const mapFiles =
     files &&
-    files.map((file) => {
+    files.map((file, key) => {
       console.log(file.fileLocation);
       return (
-        <img src={setUrl("http://" + file.fileLocation)} alt={`${file.id}`} />
+        <img
+          src={setUrl("http://" + file.fileLocation)}
+          alt={`${file.id}`}
+          className={`ListImg ${key === titleKey && "select"}`}
+        />
       );
     });
+
+  const TitleFile = () => {
+    return (
+      <img
+        src={setUrl("http://" + files[titleKey].fileLocation)}
+        alt={`${files[titleKey].id}`}
+        className="titleImg"
+      />
+    );
+  };
 
   return (
     <ReadProjectCardContainer>
@@ -56,20 +71,20 @@ const ReadProjectCard: React.FC<IProps> = ({ project }) => {
           <span className="review">리뷰 {commentNum}</span>
         </div>
       </ReadProjectCardHeader>
-      {mapFiles}
       {/* <img src={mainPhoto.fileLocation} alt="" /> */}
 
-      {/* <ReadProjectCardHighLight>
-        <div className="titleImg" />
+      <ReadProjectCardHighLight>
+        <TitleFile />
         <ReadProjectCardImgList>
-          <div className="ListImg select" />
+          {mapFiles}
+          <div className="ListImg" />
           <div className="ListImg" />
           <div className="ListImg" />
           <div className="ListImg" />
           <div className="ListImg" />
           <div className="ListImg" />
         </ReadProjectCardImgList>
-      </ReadProjectCardHighLight> */}
+      </ReadProjectCardHighLight>
     </ReadProjectCardContainer>
   );
 };

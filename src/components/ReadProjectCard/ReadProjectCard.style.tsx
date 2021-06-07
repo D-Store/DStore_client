@@ -105,8 +105,9 @@ export const ReadProjectCardImgList = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 200px;
+    width: 200px;
     min-height: 112.5px;
+    max-height: 112.5px;
     margin-bottom: 18.75px;
   }
   .select {
