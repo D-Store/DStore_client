@@ -1,6 +1,7 @@
 import React from "react";
 import Like from "../../public/static/svg/Like.svg";
 import { CommentType } from "../../types/comment";
+import timeCounting from "time-counting";
 import {
   ReadProjectReviewContainer,
   ReadProjectReviewForm,
@@ -37,24 +38,24 @@ const ReadProjectReview: React.FC<IProps> = ({ comments }) => {
     comments.map(comment => {
       return (
         <ReadProjectReviewItem>
-          <img
-            src={comment.user.profileImage}
-            alt="profile"
-            className="profile"
-          />
-          <div className="content">{comment.comment}</div>
-          <div className="isLike">
-            <Like />
-            <div>
-              <div>좋아요</div>
-              {/* {isLike ? <div>누름</div> : <div>누르지 않음</div>} */}
+          <div className="info">
+            <img
+              src={comment.user.profileImage}
+              alt="profile"
+              className="profile"
+            />
+            <div className="name">{comment.user.name}</div>
+            <div className="timeLine">
+              {timeCounting(comment.createAt, {
+                lang: "ko",
+              })}
             </div>
           </div>
+          <div className="content">{comment.comment}</div>
         </ReadProjectReviewItem>
       );
     });
 
-  console.log(comments);
   return (
     <ReadProjectReviewContainer>
       <ReadProjectReviewForm>
