@@ -7,8 +7,8 @@ interface IProps {
   id: number;
   title: string;
   content: string;
-  thumnail: string;
-  isSlide: boolean;
+  thumnail?: string;
+  isSlide?: boolean;
 }
 
 const ProjectCard: React.FC<IProps> = ({

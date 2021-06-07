@@ -4,6 +4,12 @@ interface IProps {
   size: number;
   sort: string;
 }
+interface IParamsTag {
+  page: number;
+  size: number;
+  sort: string;
+  tags: string[];
+}
 
 export const getProjectsAPI = async (data: IProps) => {
   try {
@@ -28,6 +34,25 @@ export const getProjectAPI = async (projectId: number) => {
 export const getCommentsAPI = async (projectId: number) => {
   try {
     const res = await customAxios.get(`/comment/${projectId}`);
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const getProjectsByCategodyAPI = async (data: IParamsTag) => {
+  try {
+    const { page, size, sort, tags } = data;
+    const tagParams = tags.join();
+
+    const res = await customAxios.get(`/tag/projects`, {
+      params: {
+        page,
+        size,
+        sort,
+        tags: tagParams,
+      },
+    });
     return res;
   } catch (error) {
     return error.response;

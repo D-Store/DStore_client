@@ -32,7 +32,6 @@ const ReadProjectCard: React.FC<IProps> = ({ project }) => {
   const mapFiles =
     files &&
     files.map((file, key) => {
-      console.log(file.fileLocation);
       return (
         <img
           src={setUrl(file.fileLocation)}
@@ -75,15 +74,7 @@ const ReadProjectCard: React.FC<IProps> = ({ project }) => {
 
       <ReadProjectCardHighLight>
         <TitleFile />
-        <ReadProjectCardImgList>
-          {mapFiles}
-          <div className="ListImg" />
-          <div className="ListImg" />
-          <div className="ListImg" />
-          <div className="ListImg" />
-          <div className="ListImg" />
-          <div className="ListImg" />
-        </ReadProjectCardImgList>
+        <ReadProjectCardImgList>{mapFiles}</ReadProjectCardImgList>
       </ReadProjectCardHighLight>
     </ReadProjectCardContainer>
   );

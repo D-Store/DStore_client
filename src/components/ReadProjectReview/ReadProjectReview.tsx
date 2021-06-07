@@ -34,7 +34,7 @@ const ProjectReview: React.FC = () => {
 const ReadProjectReview: React.FC<IProps> = ({ comments }) => {
   const mapComments =
     comments &&
-    comments.map(comment => {
+    comments.map((comment) => {
       return (
         <ReadProjectReviewItem>
           <img
@@ -54,7 +54,6 @@ const ReadProjectReview: React.FC<IProps> = ({ comments }) => {
       );
     });
 
-  console.log(comments);
   return (
     <ReadProjectReviewContainer>
       <ReadProjectReviewForm>

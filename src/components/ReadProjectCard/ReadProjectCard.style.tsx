@@ -83,7 +83,6 @@ export const ReadProjectCardHighLight = styled.div`
   justify-content: space-between;
   max-height: 506.25px;
   .titleImg {
-    background-image: url("https://i.ytimg.com/vi/B-v0OiOCnJ0/maxresdefault.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -112,7 +111,6 @@ export const ReadProjectCardImgList = styled.div`
   }
   .ListImg {
     border-radius: 10px;
-    background-image: url("https://i.ytimg.com/vi/F1L_hyoV8yM/maxresdefault.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

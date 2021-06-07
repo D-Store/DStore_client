@@ -21,7 +21,7 @@ const projectId: React.FC<IProps> = ({ project, comments }) => {
         <title>메인 | 디스토어</title>
       </Head>
       <ReadProjectCard project={project} />
-      <ReadProjectContent />
+      <ReadProjectContent content={project.content} />
       <ReadProjectReview comments={comments} />
     </>
   );
@@ -34,8 +34,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
     const projectResponse = await getProjectAPI(Number(projectId));
     const commentsResponse = await getCommentsAPI(Number(projectId));
-
-    console.log(commentsResponse);
 
     return {
       props: {
