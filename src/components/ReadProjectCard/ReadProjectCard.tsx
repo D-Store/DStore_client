@@ -26,7 +26,7 @@ const ReadProjectCard: React.FC<IProps> = ({ project }) => {
     files,
   } = project;
 
-  const mapTags = tags && tags.map(tag => <li>{tag}</li>);
+  const mapTags = tags && tags.map((tag) => <li>{tag}</li>);
   let titleKey = 0;
 
   const mapFiles =
@@ -35,7 +35,7 @@ const ReadProjectCard: React.FC<IProps> = ({ project }) => {
       console.log(file.fileLocation);
       return (
         <img
-          src={setUrl("http://" + file.fileLocation)}
+          src={setUrl(file.fileLocation)}
           alt={`${file.id}`}
           className={`ListImg ${key === titleKey && "select"}`}
         />
@@ -45,7 +45,7 @@ const ReadProjectCard: React.FC<IProps> = ({ project }) => {
   const TitleFile = () => {
     return (
       <img
-        src={setUrl("http://" + files[titleKey].fileLocation)}
+        src={setUrl(files[titleKey].fileLocation)}
         alt={`${files[titleKey].id}`}
         className="titleImg"
       />
