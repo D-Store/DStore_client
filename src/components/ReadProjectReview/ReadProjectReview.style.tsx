@@ -51,42 +51,38 @@ export const ReadProjectReviewList = styled.div`
 export const ReadProjectReviewItem = styled.div<IPropsProjectReviewType>`
   margin-top: 30px;
   width: 100%;
-  min-height: 150px;
+  min-height: 220px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  .profile {
-    min-width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    background-color: ${pallete.input_back};
-    background-image: url("https://i.ytimg.com/vi/B-v0OiOCnJ0/maxresdefault.jpg");
-    background-size: cover;
-    background-position: center;
+  .info {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    align-items: flex-end;
+    .profile {
+      min-width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: ${pallete.input_back};
+      background-image: url("https://i.ytimg.com/vi/B-v0OiOCnJ0/maxresdefault.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+    .name {
+      width: 5%;
+    }
+    .timeLine {
+      width: 90%;
+    }
   }
   .content {
     padding: 1rem;
-    width: 675px;
+    width: 100%;
     min-height: 150px;
     border-radius: 20px;
     background-color: ${pallete.input_back};
-  }
-  .isLike {
-    width: 125px;
-    min-height: 150px;
-    border-radius: 20px;
-    background-color: ${pallete.input_back};
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    path {
-      fill: ${(props) => (props.isLike && "rgb(238, 85, 85)") || "black"};
-    }
-    div {
-      font-size: ${sizes.mideum_font};
-      font-weight: bold;
-      text-align: center;
-    }
   }
 `;
