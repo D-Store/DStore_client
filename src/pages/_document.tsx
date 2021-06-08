@@ -6,6 +6,7 @@ import Document, {
   DocumentContext,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import WriteFloat from "../components/WriteFloat";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

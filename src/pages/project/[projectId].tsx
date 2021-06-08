@@ -8,6 +8,7 @@ import { pageInit } from "../../lib/pageInit";
 import { getCommentsAPI, getProjectAPI } from "../../lib/api/project";
 import { ProjectType } from "../../types/project";
 import { CommentType } from "../../types/comment";
+import WriteFloat from "../../components/WriteFloat";
 
 interface IProps {
   project: ProjectType;
@@ -23,6 +24,7 @@ const projectId: React.FC<IProps> = ({ project, comments }) => {
       <ReadProjectCard project={project} />
       <ReadProjectContent content={project.content} />
       <ReadProjectReview comments={comments} />
+      <WriteFloat />
     </>
   );
 };

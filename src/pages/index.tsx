@@ -6,6 +6,7 @@ import Banner from "../components/Banner";
 import CategoryList from "../components/CategoryList/index";
 import HotProjectList from "../components/HotProjectList";
 import NewProjectList from "../components/NewProjectList";
+import WriteFloat from "../components/WriteFloat";
 import { pageInit } from "../lib/pageInit";
 import { useTypedSelector, wrapper } from "../store";
 
@@ -30,6 +31,7 @@ const index: NextPage = () => {
           <h1>등록되어 있는 프로젝트가 없습니다.</h1>
         )}
       </div>
+      <WriteFloat />
     </>
   );
 };

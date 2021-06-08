@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import ProjectCard from "../../components/ProjectCard";
 import SearchProjectList from "../../components/SearchProjectList";
+import WriteFloat from "../../components/WriteFloat";
 import { getProjectsByCategodyAPI } from "../../lib/api/project";
 import { pageInit } from "../../lib/pageInit";
 import { wrapper } from "../../store";
@@ -30,6 +31,7 @@ const Category: React.FC<IProps> = ({ projects }) => {
       ) : (
         <SearchProjectList projects={projects} />
       )}
+      <WriteFloat />
     </>
   );
 };

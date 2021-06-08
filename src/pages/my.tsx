@@ -10,6 +10,7 @@ import sizes from "../style/sizes";
 import pallete from "../style/pallete";
 import { pageInit } from "../lib/pageInit";
 import MyInfoCard from "../components/MyInfoCard";
+import WriteFloat from "../components/WriteFloat";
 
 const my: NextPage = () => {
   const { openModal, ModalPortal } = useModal();
@@ -49,6 +50,7 @@ const my: NextPage = () => {
           </>
         )}
       </div>
+      <WriteFloat />
     </>
   );
 };

@@ -8,6 +8,7 @@ import { wrapper } from "../store";
 import { NextComponentType } from "next";
 import ReduxToastr from "react-redux-toastr";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
+import WriteFloat from "../components/WriteFloat";
 
 const app: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
