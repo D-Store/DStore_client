@@ -13,6 +13,10 @@ export const FloatMenu = styled.div`
   border-radius: 20px;
   cursor: pointer;
   transition: ease-in 0.2s;
+  a {
+    text-decoration: none;
+    color: ${pallete.text_color};
+  }
   &:hover {
     filter: brightness(80%);
   }
