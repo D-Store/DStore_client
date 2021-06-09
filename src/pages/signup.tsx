@@ -1,10 +1,11 @@
 import React from "react";
 import PageTemplate from "../components/PageTemplate";
+import SignUpForm from "../components/SignUpForm";
 
 const SignUp = () => {
   return (
     <>
-      <div>Hello</div>
+      <SignUpForm />
     </>
   );
 };
