@@ -2,33 +2,20 @@ import styled from "styled-components";
 import pallete from "../../style/pallete";
 import sizes from "../../style/sizes";
 
-export const Container = styled.div`
-  width: 480px;
-  height: 614px;
-  background-color: #222222;
-  z-index: 11;
-  color: black;
+export const Form = styled.form`
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 1rem;
-  box-sizing: border-box;
   h1 {
-    margin-top: calc(60% / 2);
-    margin-bottom: 20%;
-    font-weight: bold;
     font-size: ${sizes.big_font};
-    color: ${pallete.text_color};
-  }
-  form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    margin-bottom: 20px;
+    font-weight: bold;
   }
   input {
     border: none;
     color: ${pallete.text_color};
-    background-color: ${pallete.background_color};
+    background-color: ${pallete.input_back};
     font-size: ${sizes.mideum_font};
     font-weight: bold;
     width: 300px;
@@ -46,14 +33,12 @@ export const Container = styled.div`
     background-color: ${pallete.main_color};
     border: none;
     cursor: pointer;
-  }
-  .go-register {
-    width: 300px;
-    color: ${pallete.text_color};
-    margin-top: 20px;
-    text-align: start;
-    a {
-      color: ${pallete.main_color};
+    margin-bottom: 10px;
+    &:hover {
+      filter: brightness(80%);
     }
+  }
+  .register {
+    margin-top: 20px;
   }
 `;

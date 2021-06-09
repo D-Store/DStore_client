@@ -24,6 +24,7 @@ export const customAxios = axios.create({
 
 customAxios.defaults.headers = {
   "Cache-Control": "no-cache",
+  "Content-Type": "application/json",
   Accept: "application/json",
   Pragma: "no-cache",
   Expires: "0",

@@ -4,3 +4,9 @@ export interface UserType {
   profileImage: string;
   follow: boolean;
 }
+
+export interface UserSignUpType {
+  email: string;
+  password: string;
+  name: string;
+}
