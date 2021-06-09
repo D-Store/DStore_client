@@ -1,6 +1,6 @@
 import React from "react";
 
-import { WriteFormContainer } from "./styles";
+import { WriteFormContainer, WriteFormContext } from "./styles";
 
 const WriteForm = () => {
   //프로젝트 생성 시 필요한 것들
@@ -13,8 +13,10 @@ const WriteForm = () => {
   // }
   return (
     <WriteFormContainer>
-      <input type="text" placeholder="프로젝트 제목" />
-      <textarea placeholder="프로젝트 내용"></textarea>
+      <WriteFormContext>
+        <input type="text" placeholder="제목" />
+        <textarea placeholder="프로젝트 내용"></textarea>
+      </WriteFormContext>
     </WriteFormContainer>
   );
 };

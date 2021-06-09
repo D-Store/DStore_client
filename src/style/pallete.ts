@@ -12,4 +12,5 @@ export default {
   background_color: "black",
   text_color: "#f2f2f2",
   input_back: "#333333",
+  bright: "#757575",
 };
