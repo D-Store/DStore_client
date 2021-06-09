@@ -41,4 +41,10 @@ export const Form = styled.form`
   .register {
     margin-top: 20px;
   }
+  .success {
+    color: ${pallete.green};
+  }
+  .error {
+    color: ${pallete.red};
+  }
 `;

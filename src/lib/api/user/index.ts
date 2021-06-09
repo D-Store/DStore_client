@@ -48,6 +48,6 @@ export const emailCheckAPI = async (email: string) => {
     })
     .catch((error) => {
       toastr.error("에러", error.response.data.message);
-      return error.response;
+      return error;
     });
 };
