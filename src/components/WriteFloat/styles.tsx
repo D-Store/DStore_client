@@ -2,11 +2,12 @@ import styled from "styled-components";
 import pallete from "../../style/pallete";
 import sizes from "../../style/sizes";
 
-export const FloatMenu = styled.div`
+export const FloatMenu = styled.button`
   position: fixed;
   bottom: 30px;
   right: 30px;
   padding: 20px;
+  border: 0;
   background-color: ${pallete.main_color};
   font-size: ${sizes.mideum_font};
   font-weight: bold;
