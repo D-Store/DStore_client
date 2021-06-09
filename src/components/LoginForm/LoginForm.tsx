@@ -27,17 +27,6 @@ interface LoginResponseType {
     refreshToken: string;
   };
 }
-
-interface MeResponseType {
-  httpStatus: string;
-  message: string;
-  user: UserType;
-}
-
-interface IProps {
-  token: string;
-}
-
 const LoginForm = () => {
   const { startLoading, endLoading, LoaderPortal } = useLoader();
 
