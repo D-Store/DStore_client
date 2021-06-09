@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { createAsyncAction, createAction } from "typesafe-actions";
-import { UserType } from "../../types/user";
+import { UserType, UserSignUpType } from "../../types/user";
 
 export const TRY_LOGIN = "user/TRY_LOGIN" as const;
 export const TRY_LOGIN_SUCCESS = "user/TRY_LOGIN_SUCCESS" as const;

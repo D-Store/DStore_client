@@ -1,10 +1,10 @@
 import axios from "axios";
 import { NextPage } from "next";
 import Head from "next/head";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import LoginForm from "../components/LoginForm";
 import useModal from "../hooks/useModal";
-import { RootState, useTypedSelector, wrapper } from "../store";
+import { useTypedSelector, wrapper } from "../store";
 import styled from "styled-components";
 import sizes from "../style/sizes";
 import pallete from "../style/pallete";
@@ -24,7 +24,6 @@ const my: NextPage = () => {
   const dispatch = useDispatch();
 
   const onLogout = useCallback(() => {
-    console.log(dispatch);
     dispatch(logoutThunk());
   }, [dispatch]);
 

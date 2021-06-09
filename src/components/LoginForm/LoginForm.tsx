@@ -10,6 +10,7 @@ import { getToken, setToken } from "../../lib/token";
 import { tryLoginThunk } from "../../store/user";
 import useLoader from "../../hooks/useLoader";
 import moment from "moment";
+import Link from "next/link";
 
 interface Form {
   email: string;
@@ -73,7 +74,10 @@ const LoginForm = () => {
         <button onClick={handleSubmit(onSubmit)}>로그인</button>
       </form>
       <div className="go-register">
-        회원이 아니신가요? <span>회원가입</span>
+        회원이 아니신가요?{" "}
+        <Link href="/signup">
+          <a>회원가입</a>
+        </Link>
       </div>
       <LoaderPortal />
     </Container>

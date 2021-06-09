@@ -52,7 +52,7 @@ export const Container = styled.div`
     color: ${pallete.text_color};
     margin-top: 20px;
     text-align: start;
-    span {
+    a {
       color: ${pallete.main_color};
     }
   }
