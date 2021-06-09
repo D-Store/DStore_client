@@ -6,6 +6,7 @@ import {
   GET_ME,
   GET_ME_SUCCESS,
   GET_ME_FAILURE,
+  LOGOUT,
 } from "./actions";
 import { IUserState, UserAction } from "./types";
 
@@ -58,4 +59,7 @@ export default createReducer<IUserState, UserAction>(initialState, {
     loading: false,
     error: true,
   }),
+  [LOGOUT]: (state, action) => {
+    return (state = initialState);
+  },
 });

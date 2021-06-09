@@ -2,7 +2,8 @@ import { AxiosResponse } from "axios";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "..";
 import { meAPI, refreshTokenAPI } from "../../lib/api/user";
-import { tryLoginAsync, tryGetMeAsync } from "./actions";
+import { removeToken } from "../../lib/token";
+import { tryLoginAsync, tryGetMeAsync, logout } from "./actions";
 import { UserAction } from "./types";
 
 export const tryLoginThunk = (): ThunkAction<
@@ -21,6 +22,18 @@ export const tryLoginThunk = (): ThunkAction<
     } catch (e) {
       dispatch(failure(e));
     }
+  };
+};
+
+export const logoutThunk = (): ThunkAction<
+  void,
+  RootState,
+  void,
+  UserAction
+> => {
+  return (dispatch) => {
+    removeToken();
+    dispatch(logout());
   };
 };
 

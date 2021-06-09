@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import LoginForm from "../components/LoginForm";
 import useModal from "../hooks/useModal";
 import { RootState, useTypedSelector, wrapper } from "../store";
@@ -11,6 +11,8 @@ import pallete from "../style/pallete";
 import { pageInit } from "../lib/pageInit";
 import MyInfoCard from "../components/MyInfoCard";
 import WriteFloat from "../components/WriteFloat";
+import { useDispatch } from "react-redux";
+import { logout, logoutThunk } from "../store/user";
 
 const my: NextPage = () => {
   const { openModal, ModalPortal } = useModal();
@@ -18,6 +20,13 @@ const my: NextPage = () => {
   const { name, profileImage, login } = useTypedSelector(
     (state) => state.user.data
   );
+
+  const dispatch = useDispatch();
+
+  const onLogout = useCallback(() => {
+    console.log(dispatch);
+    dispatch(logoutThunk());
+  }, [dispatch]);
 
   useEffect(() => {
     openModal();
@@ -35,7 +44,10 @@ const my: NextPage = () => {
         }}
       >
         {login ? (
-          <MyInfoCard name={name} profile={profileImage}></MyInfoCard>
+          <>
+            <MyInfoCard name={name} profile={profileImage}></MyInfoCard>
+            <LogoutButton onClick={onLogout}>🚨로그아웃</LogoutButton>
+          </>
         ) : (
           <>
             <>
@@ -55,6 +67,22 @@ const my: NextPage = () => {
   );
 };
 
+const LogoutButton = styled.button`
+  margin-top: 30px;
+  padding: 10px;
+  width: 130px;
+  background-color: ${pallete.main_color};
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: ${pallete.text_color};
+  font-size: ${sizes.mideum_font};
+  transition: ease 0.2s;
+  &:hover {
+    filter: brightness(80%);
+  }
+`;
 export const NotLoggedInPage = styled.div`
   h1 {
     font-size: ${sizes.big_font};
