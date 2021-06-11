@@ -3,9 +3,11 @@ import Cookies from "js-cookie";
 
 export const setToken = (value: string) => {
   const expires = new Date();
-  expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 30);
-
-  Cookies.set("access_token", value, { expires, path: "/" });
+  // expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 30);
+  console.log("refreshed " + value);
+  console.log("set");
+  Cookies.remove("access_token");
+  Cookies.set("access_token", value);
 };
 
 export const getToken = () => {

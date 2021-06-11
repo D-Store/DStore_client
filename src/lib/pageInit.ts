@@ -16,10 +16,15 @@ export const pageInit = async (context: any) => {
     const accessExpired = Number(allCookies["access_expired"]);
 
     const now = Date.now();
-    setToken(accessToken);
+    // setToken(accessToken);
+    context.res.setHeader(
+      "Set-Cookie",
+      `access_token=${accessToken}; path = "/";`
+    );
     axios.defaults.headers.common["Authorization"] = `${accessToken}`;
 
     if (now > accessExpired) {
+      console.log("refresh");
       //* 토큰이 만료됨.
       const refreshTokenByCookie = allCookies["refresh_token"];
 
@@ -29,9 +34,23 @@ export const pageInit = async (context: any) => {
       const { accessToken, refreshToken, accessExpiredTime } =
         refreshResponse.data.tokens;
 
-      setToken(accessToken);
-      Cookies.set("refresh_token", refreshToken);
-      Cookies.set("access_expired", accessExpiredTime);
+      context.res.setHeader(
+        "Set-Cookie",
+        `access_token=${accessToken}; path = "/";`
+      );
+      context.res.setHeader(
+        "Set-Cookie",
+        `refresh_token=${refreshToken}; path = "/";`
+      );
+      context.res.setHeader(
+        "Set-Cookie",
+        `access_expired=${accessExpiredTime}; path = "/";`
+      );
+
+      // console.log("resh", accessToken);
+      // setToken(accessToken);
+      // Cookies.set("refresh_token", refreshToken);
+      // Cookies.set("access_expired", accessExpiredTime);
 
       axios.defaults.headers.common["Authorization"] = `${accessToken}`;
     }
