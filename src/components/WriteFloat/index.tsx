@@ -4,11 +4,11 @@ import { FloatMenu } from "./styles";
 
 const WriteFloat: React.FC = () => {
   return (
-    <FloatMenu>
-      <Link href="/write">
+    <Link href="/write">
+      <FloatMenu>
         <a>🖋프로젝트 작성</a>
-      </Link>
-    </FloatMenu>
+      </FloatMenu>
+    </Link>
   );
 };
 
