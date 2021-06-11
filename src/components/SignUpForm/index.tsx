@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { Form } from "./styles";
 import { useForm } from "react-hook-form";
-import { emailCheckAPI } from "../../lib/api/user";
-import { usePending } from "../../hooks/usePending";
+import { emailCheckAPI, registerAPI } from "../../lib/api/user";
+import { toastr } from "react-redux-toastr";
+import { useRouter } from "next/dist/client/router";
 
 interface SignUp {
   email: string;
@@ -14,21 +15,33 @@ interface SignUp {
 const SignUpForm = () => {
   const { register, handleSubmit: submit, getValues } = useForm<SignUp>();
   const [isEmailChecked, setIsEmailChecked] = useState(false);
+  const router = useRouter();
 
-  const handleSubmit = (inputData: SignUp) => {
-    const hasEmpty = !Boolean(
-      getValues().email &&
-        getValues().name &&
-        getValues().password &&
-        getValues().passwordChk
-    );
+  const handleSubmit = () => {
+    const { email, password, name, passwordChk } = getValues();
+    const hasEmpty = !Boolean(email && name && password && passwordChk);
 
-    const samePassword = getValues().password === getValues().passwordChk;
+    const samePassword = password === passwordChk;
 
     if (!hasEmpty && isEmailChecked && samePassword) {
-      console.log("회원가입 진행시켜");
+      registerAPI({
+        email,
+        name,
+        password,
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            toastr.success("회원가입 성공", "");
+            setTimeout(() => {
+              router.push("/my");
+            }, 2);
+          }
+        })
+        .catch((error) => {
+          toastr.error("에러 발생", error.response.data.message);
+        });
     } else {
-      console.log("누락됨");
+      toastr.error("누락됨", "양식을 다 채워주세요");
     }
   };
 

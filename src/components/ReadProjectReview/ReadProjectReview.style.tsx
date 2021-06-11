@@ -67,7 +67,6 @@ export const ReadProjectReviewItem = styled.div<IPropsProjectReviewType>`
       height: 50px;
       border-radius: 50%;
       background-color: ${pallete.input_back};
-      background-image: url("https://i.ytimg.com/vi/B-v0OiOCnJ0/maxresdefault.jpg");
       background-size: cover;
       background-position: center;
     }

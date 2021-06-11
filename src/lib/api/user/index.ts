@@ -1,6 +1,7 @@
 import { toastr } from "react-redux-toastr";
 import { UserType } from "../../../types/user";
 import customAxios from "../../customApi";
+import { useRouter } from "next/router";
 
 interface IProps {
   email: string;
@@ -50,4 +51,21 @@ export const emailCheckAPI = async (email: string) => {
       toastr.error("에러", error.response.data.message);
       return error;
     });
+};
+
+interface RegisterData {
+  email: string;
+  password: string;
+  name: string;
+}
+
+export const registerAPI = async (data: RegisterData) => {
+  const response = customAxios.post(`/auth/create`, data);
+  return response;
+  // .then((response) => {
+  //   toastr.success("회원가입 성공", response.data.message);
+  // })
+  // .catch((error) => {
+  //   toastr.error("에러 발생", error.response.data.message);
+  // });
 };

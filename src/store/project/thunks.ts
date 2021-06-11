@@ -16,7 +16,7 @@ export const getProjectsThunk = (): ThunkAction<
     dispatch(request());
     try {
       const data = {
-        page: 1,
+        page: 0,
         size: 4,
         sort: "id,desc",
       };
