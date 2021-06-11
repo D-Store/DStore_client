@@ -4,6 +4,7 @@ import { wrapper } from "../store";
 import { pageInit } from "../lib/pageInit";
 import WriteForm from "../components/WriteForm";
 import WriteTag from "../components/WriteTag";
+import PhotoSlideList from "../components/PhotoSlideList";
 
 const find: NextPage = () => {
   //프로젝트 생성 시 필요한 것들
@@ -22,6 +23,7 @@ const find: NextPage = () => {
       </Head>
       <WriteForm />
       <WriteTag />
+      <PhotoSlideList />
     </>
   );
 };
