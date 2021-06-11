@@ -10,6 +10,8 @@ export const pageInit = async (context: any) => {
   const allCookies = cookies(context);
   const accessToken = allCookies["access_token"];
 
+  console.log(accessToken);
+
   if (accessToken !== undefined) {
     const accessExpired = Number(allCookies["access_expired"]);
 

@@ -24,7 +24,7 @@ export const getProjectsAPI = async (data: IProps) => {
 
 export const getProjectAPI = async (projectId: number) => {
   try {
-    const res = await customAxios.get(`/project/${projectId}`);
+    const res = await customAxios.get(`/project/detail/${projectId}`);
     return res;
   } catch (error) {
     return error.response;
@@ -57,4 +57,15 @@ export const getProjectsByCategodyAPI = async (data: IParamsTag) => {
   } catch (error) {
     return error.response;
   }
+};
+
+interface CommentCreateType {
+  projectId: number;
+  comment: string;
+}
+
+export const createComment = async (data: CommentCreateType) => {
+  const response = await customAxios.post("comment", data);
+
+  return response;
 };

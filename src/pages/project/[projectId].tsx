@@ -23,7 +23,7 @@ const projectId: React.FC<IProps> = ({ project, comments }) => {
       </Head>
       <ReadProjectCard project={project} />
       <ReadProjectContent content={project.content} />
-      <ReadProjectReview comments={comments} />
+      <ReadProjectReview comments={comments} projectId={project.id} />
       <WriteFloat />
     </>
   );

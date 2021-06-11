@@ -8,10 +8,13 @@ import NewProjectList from "../components/NewProjectList";
 import Input from "../components/Input";
 import { useState } from "react";
 import FindList from "../components/FindList";
+import pallete from "../style/pallete";
+import sizes from "../style/sizes";
 
 const find: NextPage = () => {
   const { data: projects } = useTypedSelector((state) => state.project);
   const [search, setSearch] = useState("");
+
   return (
     <>
       <Head>
@@ -22,7 +25,11 @@ const find: NextPage = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="검색을 해보세요"
+        style={{
+          width: `${sizes.max_width}`,
+        }}
       />
+
       <FindList projects={projects} />
       <WriteFloat />
     </>

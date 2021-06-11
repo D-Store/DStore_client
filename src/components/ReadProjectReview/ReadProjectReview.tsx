@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import Like from "../../public/static/svg/Like.svg";
 import { CommentType } from "../../types/comment";
 import timeCounting from "time-counting";
@@ -8,36 +8,37 @@ import {
   ReadProjectReviewList,
   ReadProjectReviewItem,
 } from "./ReadProjectReview.style";
+import { createComment } from "../../lib/api/project";
+import { toastr } from "react-redux-toastr";
 
 interface IProps {
   comments: CommentType[];
+  projectId: number;
 }
-
-const ProjectReview: React.FC = () => {
-  return (
-    <ReadProjectReviewItem>
-      <div className="profile" />
-      <div className="content">
-        리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용 리뷰 내용
-        리뷰 내용
-      </div>
-      <div className="isLike">
-        <Like />
-        <div>
-          <div>좋아요</div>
-          {/* {isLike ? <div>누름</div> : <div>누르지 않음</div>} */}
-        </div>
-      </div>
-    </ReadProjectReviewItem>
+const ReadProjectReview: React.FC<IProps> = ({ comments, projectId }) => {
+  const [comment, setComment] = useState("");
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      await createComment({
+        projectId,
+        comment,
+      })
+        .then((response) => {
+          toastr.success("댓글 작성 성공!", response.data.message);
+        })
+        .catch((error) => {
+          toastr.error("에러", error.response.data.message);
+        });
+    },
+    [comment]
   );
-};
 
-const ReadProjectReview: React.FC<IProps> = ({ comments }) => {
   const mapComments =
     comments &&
     comments.map((comment) => {
       return (
-        <ReadProjectReviewItem>
+        <ReadProjectReviewItem key={comment.id}>
           <div className="info">
             <img
               src={comment.user.profileImage}
@@ -58,9 +59,12 @@ const ReadProjectReview: React.FC<IProps> = ({ comments }) => {
 
   return (
     <ReadProjectReviewContainer>
-      <ReadProjectReviewForm>
-        <textarea></textarea>
-        <button>작성</button>
+      <ReadProjectReviewForm onSubmit={handleSubmit}>
+        <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        ></textarea>
+        <button type="submit">작성</button>
       </ReadProjectReviewForm>
       <ReadProjectReviewList>{mapComments}</ReadProjectReviewList>
     </ReadProjectReviewContainer>
