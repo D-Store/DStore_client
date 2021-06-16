@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Container = styled.div`
   width: 100%;
