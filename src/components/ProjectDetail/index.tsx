@@ -1,3 +1,4 @@
+import Comment from "components/Comment";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -69,6 +70,8 @@ const ProjectDetail = () => {
         <ul className="imgs">{mapImages}</ul>
       </div>
       <span className="content">{detailProject.project.content}</span>
+
+      <Comment />
     </ProjectDetailContainer>
   );
 };

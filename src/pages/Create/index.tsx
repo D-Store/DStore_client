@@ -47,7 +47,13 @@ const Create = () => {
     return (
       <MakerItem key={maker.id}>
         <div className="meta">
-          <img src={maker.profileImage} alt={`${maker.name}의 프로필`} />
+          <img
+            src={
+              maker.profileImage ||
+              "https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2"
+            }
+            alt={`${maker.name}의 프로필`}
+          />
           <p>{maker.name}</p>
         </div>
         <div
