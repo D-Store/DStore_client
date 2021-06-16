@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 
 export const customAxios = axios.create({
   baseURL: "http://10.80.162.184:8080",
-  withCredentials: true,
 });
 
 const accessToken = sessionStorage.getItem("access_token") || "";
