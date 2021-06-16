@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 import useSWR from "swr";
-import fetcher from "utils/fetcher";
+import fetcher, { paramFetcher } from "utils/fetcher";
 import autosize from "autosize";
 import { CommentInput, CommentItem, CommentList } from "./styles";
 import { useParams } from "react-router";
@@ -14,7 +14,25 @@ import timeCounting from "time-counting";
 const Comment = () => {
   const { id } = useParams<{ id: string }>();
   const { data: userData } = useSWR("/user/me", fetcher);
-  const { data: commentData, revalidate } = useSWR(`/comment/${id}`, fetcher);
+  //   const { data: commentData, revalidate } = useSWR(
+  //     [
+  //       `/comment/${id}`,
+  //       {
+  //         page: 0,
+  //         size: 5,
+  //         sort: "createAt,desc",
+  //       },
+  //     ],
+  //     paramFetcher
+  //   );
+  const { data: commentData, revalidate } = useSWR(`/comment/${id}`, (url) =>
+    paramFetcher(url, {
+      page: 0,
+      size: 5,
+      sort: "createAt,desc",
+    })
+  );
+
   const commentRef = useRef<HTMLTextAreaElement>(null);
 
   const [comment, onChangeComment] = useInput("");
