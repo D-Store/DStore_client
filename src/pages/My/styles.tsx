@@ -25,16 +25,6 @@ export const MyInfoCardContainer = styled.section`
     box-sizing: content-box;
     border: 7px solid ${pallete.background_color};
   }
-  .user-setting {
-    position: absolute;
-    bottom: 0;
-    left: 100%;
-    z-index: 2;
-    width: 38px;
-    height: 38px;
-    margin-bottom: 32px;
-    margin-left: -40px;
-  }
   h1 {
     text-align: center;
     margin-top: 20px;
@@ -52,5 +42,19 @@ export const MyInfoCardContainer = styled.section`
     font-weight: bold;
     border: none;
     cursor: pointer;
+    &.user-setting {
+      width: 150px;
+      position: absolute;
+      background-color: ${pallete.green};
+      bottom: 10px;
+      right: 10px;
+    }
   }
+`;
+
+export const Contaienr = styled.div`
+  width: 600px;
+  height: 600px;
+  background-color: ${pallete.input_back};
+  z-index: 999;
 `;

@@ -18,7 +18,6 @@ const My = loadable(() => import("pages/My"));
 
 const PageLayout: FC = () => {
   if (!sessionStorage.getItem("access_token")) {
-    toast.error("허용되지 않은 접근입니다.");
     return <Redirect to="/login" />;
   }
 
