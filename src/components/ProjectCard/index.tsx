@@ -9,7 +9,7 @@ interface Props {
 
 const ProjectCard: VFC<Props> = ({ project }) => {
   const mapTags = project.tags?.map((tag: string, index: number) => (
-    <Tag>#{tag}</Tag>
+    <Tag key={tag}>#{tag}</Tag>
   ));
 
   return (

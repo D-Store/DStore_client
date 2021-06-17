@@ -9,12 +9,12 @@ import {
 } from "./styles";
 import { ReactComponent as Logo } from "assets/svg/logo.svg";
 import loadable from "@loadable/component";
-import ProjectDetail from "components/ProjectDetail";
-import { toast } from "react-toastify";
 
 const Main = loadable(() => import("pages/Main"));
 const Find = loadable(() => import("pages/Find"));
 const My = loadable(() => import("pages/My"));
+const Tag = loadable(() => import("pages/Tag"));
+const ProjectDetail = loadable(() => import("components/ProjectDetail"));
 
 const PageLayout: FC = () => {
   if (!sessionStorage.getItem("access_token")) {
@@ -42,6 +42,7 @@ const PageLayout: FC = () => {
         <Route path="/template/find" component={Find} />
         <Route path="/template/my" component={My} />
         <Route path="/template/project/:id" component={ProjectDetail} />
+        <Route path="/template/tag/:tag" component={Tag} />
       </div>
       <FooterContainer>
         <p>All Right Reserved</p>

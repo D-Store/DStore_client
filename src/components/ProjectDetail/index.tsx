@@ -34,11 +34,12 @@ const ProjectDetail = () => {
 
   const mapTags = detailProject?.project.tags.map(
     (tag: string, index: number) => (
-      <Link to="/" className="tag" key={index}>
+      <Link to={`/template/tag/${tag}`} className="tag" key={index}>
         #{tag}
       </Link>
     )
   );
+
   const mapImages = detailProject?.project.files.map((file: any) => {
     return (
       <li key={file.id}>
