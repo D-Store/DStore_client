@@ -56,7 +56,7 @@ const Login = () => {
           })
           .catch((error) => {
             console.dir(error.response);
-            toast.error("에러발생");
+            toast.error(error.response.data.message);
           });
       }
     },

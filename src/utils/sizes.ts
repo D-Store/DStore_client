@@ -3,7 +3,7 @@ const sizes = {
   mideum_font: "16px",
   big_font: "28px",
   title_font: "34px",
-  max_width: "1200px",
+  max_width: "1000px",
   slide_width: "450px",
   slide_height: "253.125px",
   project_width: "1000px",

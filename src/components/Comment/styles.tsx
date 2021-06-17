@@ -9,7 +9,8 @@ export const CommentInput = styled.div`
   display: flex;
   align-items: center;
   img {
-    width: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 20px;
   }

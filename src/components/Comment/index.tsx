@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import fetcher, { paramFetcher } from "utils/fetcher";
 import autosize from "autosize";
@@ -14,17 +14,6 @@ import timeCounting from "time-counting";
 const Comment = () => {
   const { id } = useParams<{ id: string }>();
   const { data: userData } = useSWR("/user/me", fetcher);
-  //   const { data: commentData, revalidate } = useSWR(
-  //     [
-  //       `/comment/${id}`,
-  //       {
-  //         page: 0,
-  //         size: 5,
-  //         sort: "createAt,desc",
-  //       },
-  //     ],
-  //     paramFetcher
-  //   );
   const { data: commentData, revalidate } = useSWR(`/comment/${id}`, (url) =>
     paramFetcher(url, {
       page: 0,
@@ -35,16 +24,19 @@ const Comment = () => {
 
   const commentRef = useRef<HTMLTextAreaElement>(null);
 
+  const [commentLoading, setCommentLoading] = useState(false);
   const [comment, onChangeComment] = useInput("");
 
   const handleCreateComment = useCallback(() => {
-    if (comment) {
+    if (comment && !commentLoading) {
+      setCommentLoading(true);
       customAxios
         .post(`/comment`, {
           projectId: id,
           comment,
         })
         .then((response) => {
+          setCommentLoading(false);
           toast.success(response.data.message);
           revalidate();
         })
@@ -52,7 +44,7 @@ const Comment = () => {
           toast.error(error.response.data.message);
         });
     }
-  }, [comment, id, revalidate]);
+  }, [comment, id, revalidate, commentLoading]);
 
   useEffect(() => {
     if (commentRef.current) {
@@ -80,7 +72,9 @@ const Comment = () => {
           value={comment}
           onChange={onChangeComment}
         />
-        <button onClick={handleCreateComment}>리뷰 작성</button>
+        <button onClick={handleCreateComment}>
+          {commentLoading ? <>로딩중...</> : <>리뷰 작성</>}
+        </button>
       </CommentInput>
       <CommentList>
         {commentData?.comments.map((comment: CommentType) => {

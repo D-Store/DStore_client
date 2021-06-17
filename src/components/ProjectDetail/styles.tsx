@@ -2,9 +2,37 @@ import styled from "@emotion/styled";
 import pallete from "utils/pallete";
 import sizes from "utils/sizes";
 
+export const Success = styled.div`
+  font-weight: bold;
+  color: ${pallete.main_color};
+`;
+
+export const Text = styled.div`
+  font-weight: lighter;
+  color: ${pallete.background_color};
+`;
+
 export const ProjectDetailContainer = styled.div`
   display: flex;
   flex-direction: column;
+  .like {
+    background-color: ${pallete.text_color};
+    left: 4%;
+    position: fixed;
+    color: ${pallete.background_color};
+    border-radius: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    transition: ease-in-out 0.2s;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+  }
   .meta-container {
     padding: 10px 0 10px 0;
     h1 {

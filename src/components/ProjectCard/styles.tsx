@@ -6,6 +6,13 @@ interface ProjectCardProps {
   imgSrc: string;
 }
 
+export const Tag = styled.div`
+  font-weight: bold;
+  color: ${pallete.main_color};
+  text-decoration: none;
+  margin-right: 10px;
+`;
+
 export const ProjectCardContainer = styled.div<ProjectCardProps>`
   width: 858px;
   height: 440px;
@@ -25,7 +32,7 @@ export const ProjectCardContainer = styled.div<ProjectCardProps>`
 
   &:hover .project-info {
     height: 80%;
-    span {
+    .content {
       width: 100%;
       white-space: normal;
       text-overflow: clip;
@@ -60,7 +67,7 @@ export const ProjectInfo = styled.div`
     font-size: ${sizes.big_font};
     font-weight: bold;
   }
-  & > span {
+  & > .content {
     width: 80%;
     padding-top: 20px;
     display: inline-block;
@@ -70,5 +77,17 @@ export const ProjectInfo = styled.div`
   }
   & > a {
     display: none;
+  }
+  & > .tags {
+    display: flex;
+  }
+  & > .like {
+    display: inline-block;
+    padding: 5px;
+    font-weight: bold;
+    color: ${pallete.text_color};
+    background-color: ${pallete.main_color};
+    border-radius: 20px;
+    margin-top: 10px;
   }
 `;

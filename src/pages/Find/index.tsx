@@ -8,13 +8,12 @@ import { InputContainer } from "./styles";
 
 const Find = () => {
   const [search, onChangeSearch] = useInput("");
-  const { data: projectData } = useSWR(`/project/${search}`, fetcher, {
-    dedupingInterval: 1000,
-  });
+  const { data: projectData } = useSWR(`/project`, fetcher);
 
   if (!projectData) {
     return <ContentLoaderComponent />;
   }
+
   return (
     <>
       <InputContainer
