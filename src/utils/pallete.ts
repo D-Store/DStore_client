@@ -1,7 +1,7 @@
 const pallete = {
   red: "#ED4337",
   //   orange: "#FFC282",
-  //   yellow: "#FCFFB0",
+  yellow: "#FCFFB0",
   green: "#E2FFAF",
   blue: "rgba(0,103,188,.85)",
   //   navy: "#B5C7ED",
@@ -12,6 +12,7 @@ const pallete = {
   background_color: "black",
   text_color: "#f2f2f2",
   input_back: "#333333",
+  border_back: "#242526",
   bright: "#757575",
 };
 export default pallete;
