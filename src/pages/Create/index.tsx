@@ -32,6 +32,7 @@ const Create = () => {
     useState<UserType[] | undefined>(undefined);
   const [makers, setMakers] = useState<UserType[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<any>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
 
@@ -81,6 +82,7 @@ const Create = () => {
     (e: React.MouseEvent<HTMLElement>) => {
       e.preventDefault();
       if (title && content && makers.length > 0) {
+        setIsLoading(true);
         let form = new FormData();
 
         const tags = hashTag
@@ -113,11 +115,12 @@ const Create = () => {
             },
           })
           .then((response) => {
-            console.log(response);
+            setIsLoading(false);
             toast.success(response.data.message);
             history.push("/");
           })
           .catch((error) => {
+            setIsLoading(false);
             toast.error(error.response.data.message);
           });
       }
@@ -265,7 +268,7 @@ const Create = () => {
         type="submit"
         onClick={handleCreateProject}
       >
-        만들기
+        {isLoading ? "등록 중..." : "만들기"}
       </Button>
     </CreateForm>
   );

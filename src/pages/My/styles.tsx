@@ -75,17 +75,10 @@ export const Contaienr = styled.div`
     align-items: center;
     justify-content: center;
     padding: 10px 0 10px 0;
-    input {
-      display: none;
-    }
-    label {
-      cursor: pointer;
-      display: inline-block;
-      min-width: 175px;
-      min-height: 175px;
+    img {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      background-image: url(${photo});
-      background-size: cover;
     }
   }
   .name {
