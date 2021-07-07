@@ -17,8 +17,11 @@ export const CommentInput = styled.div`
   textarea {
     width: 90%;
     font-size: ${sizes.mideum_font};
+    background-color: ${pallete.input_back};
+    resize: none;
     outline: none;
     border: none;
+    color: ${pallete.text_color};
     font-family: "Noto Sans KR", sans-serif;
   }
   button {
@@ -27,6 +30,7 @@ export const CommentInput = styled.div`
     font-size: ${sizes.mideum_font};
     font-family: 500;
     font-weight: bold;
+    border-radius: 7px;
     background-color: ${pallete.main_color};
     border: none;
     cursor: pointer;

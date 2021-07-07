@@ -1,7 +1,7 @@
 import ContentLoaderComponent from "components/ContentLoader";
 import ProjectList from "components/ProjectList";
 import useInput from "hooks/useInput";
-import React from "react";
+import React, { useEffect } from "react";
 import useSWR from "swr";
 import fetcher from "utils/fetcher";
 import { InputContainer } from "./styles";
@@ -9,6 +9,10 @@ import { InputContainer } from "./styles";
 const Find = () => {
   const [search, onChangeSearch] = useInput("");
   const { data: projectData } = useSWR(`/project`, fetcher);
+
+  useEffect(() => {
+    console.log(search);
+  }, [search]);
 
   if (!projectData) {
     return <ContentLoaderComponent />;
@@ -26,6 +30,7 @@ const Find = () => {
         title="탐색된 프로젝트"
         subTitle="검색 결과가 마음에 들었으면 좋겠어요!"
         projects={projectData?.projectList}
+        serchValue={search}
       />
     </>
   );

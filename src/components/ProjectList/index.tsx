@@ -7,9 +7,10 @@ interface Props {
   title?: string;
   subTitle?: string;
   projects: ProjectType[];
+  serchValue?: string;
 }
 
-const ProjectList: VFC<Props> = ({ subTitle, title, projects }) => {
+const ProjectList: VFC<Props> = ({ subTitle, title, projects, serchValue }) => {
   return (
     <>
       <ProjectContainer>
@@ -18,9 +19,24 @@ const ProjectList: VFC<Props> = ({ subTitle, title, projects }) => {
           <span>{subTitle}</span>
         </div>
         <div className="projects-list">
-          {projects?.map((project) => (
-            <ProjectCard project={project} key={project.id} />
-          ))}
+          {serchValue
+            ? projects
+                .filter(
+                  project =>
+                    typeof project.title === "string" &&
+                    project.title.includes(serchValue)
+                )
+                .map(project => {
+                  console.log(
+                    serchValue,
+                    project,
+                    serchValue === project.title
+                  );
+                  return <ProjectCard project={project} key={project.id} />;
+                })
+            : projects?.map(project => (
+                <ProjectCard project={project} key={project.id} />
+              ))}
         </div>
       </ProjectContainer>
     </>

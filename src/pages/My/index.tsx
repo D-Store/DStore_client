@@ -122,9 +122,7 @@ const My = () => {
                 </button>
               </div>
               <div className="delete">
-                {/* <button onClick={() => handleSubmit(handleDelete)}>
-                  계정 삭제
-                </button> */}
+                <button>계정 삭제</button>
               </div>
             </div>
           </div>
