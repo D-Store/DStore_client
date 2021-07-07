@@ -49,20 +49,23 @@ export const ProjectDetailContainer = styled.div`
   .img-container {
     display: flex;
     .main-img {
-      width: ${sizes.max_width};
-      height: 500px;
+      width: 700px;
+      height: 394px;
+      background-position: center;
     }
     .imgs {
       display: flex;
       margin-left: 10px;
       flex-direction: column;
       width: 240px;
-      height: 500px;
+      height: 394px;
       overflow-y: auto;
       padding: 0px 15px;
       img {
         width: 100%;
-        height: 200px;
+        height: 135px;
+        object-fit: cover;
+        object-position: center top;
         &.active {
           border: 3px solid ${pallete.main_color};
         }
