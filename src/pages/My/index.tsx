@@ -5,6 +5,7 @@ import ContentLoaderComponent from "components/ContentLoader";
 import { Contaienr, MyInfoCardContainer } from "./styles";
 import { useForm } from "react-hook-form";
 import { Redirect } from "react-router";
+import { customAxios } from "utils/customAxios";
 import useModal from "hooks/useModal";
 
 interface Form {
@@ -16,6 +17,7 @@ const My = () => {
   const { ModalPortal, openModal, closeModal } = useModal();
   const { data: userData, error } = useSWR("/user/me", fetcher);
   const { register, handleSubmit } = useForm();
+  let isHandle: boolean = false;
 
   const handleLogout = useCallback(() => {
     sessionStorage.clear();
@@ -25,6 +27,31 @@ const My = () => {
   const handleEditProfile = useCallback(() => {
     openModal();
   }, [openModal]);
+
+  const handleChange = useCallback(
+    (changeAuthData: Form, changePasswordData) => {
+      const { email, password } = changeAuthData;
+      const { changePassword, changeName } = changePasswordData;
+      if (changePassword && changeName) {
+        customAxios.put("/user/password-and-name", {
+          email,
+          password,
+          changePassword,
+          changeName,
+        });
+      } else if (email && password) {
+        isHandle = true;
+      }
+    },
+    []
+  );
+
+  const form = (input: string, input1: string) => (
+    <div className="form">
+      <input type="text" placeholder={input} {...register(input)} />
+      <input type="password" placeholder={input1} {...register(input1)} />
+    </div>
+  );
 
   if (!userData && !error) {
     return <ContentLoaderComponent />;
@@ -78,16 +105,16 @@ const My = () => {
           <div className="change">
             <button>변경</button>
           </div>
-          {/* <div className="introduce">
+          <div className="introduce">
             <textarea placeholder="자기소개" />
           </div>
           <div className="change">
             <button>변경</button>
-          </div> */}
+          </div>
           <div className="auth">
-            {/* {isHandle
-              ? form("email", "password")
-              : form("changePassword", "changeName")}
+            {isHandle
+              ? form("changePassword", "changeName")
+              : form("email", "password")}
             <div className="bigBtn">
               <div className="pwd">
                 <button onClick={() => handleSubmit(handleChange)}>
@@ -95,11 +122,11 @@ const My = () => {
                 </button>
               </div>
               <div className="delete">
-                <button onClick={() => handleSubmit(handleDelete)}>
+                {/* <button onClick={() => handleSubmit(handleDelete)}>
                   계정 삭제
-                </button>
+                </button> */}
               </div>
-            </div> */}
+            </div>
           </div>
         </Contaienr>
       </ModalPortal>
