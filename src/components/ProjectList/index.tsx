@@ -23,14 +23,20 @@ const ProjectList: VFC<Props> = ({ subTitle, title, projects, serchValue }) => {
             ? projects
                 .filter(
                   project =>
-                    typeof project.title === "string" &&
-                    project.title.includes(serchValue)
+                    (typeof project.title === "string" &&
+                      project.title.includes(serchValue)) ||
+                    (project.tags &&
+                      project.tags
+                        .map(tag => {
+                          return tag;
+                        })
+                        .includes(serchValue))
                 )
                 .map(project => {
                   console.log(
-                    serchValue,
-                    project,
-                    serchValue === project.title
+                    project.tags.map(tag => {
+                      return tag;
+                    })
                   );
                   return <ProjectCard project={project} key={project.id} />;
                 })
