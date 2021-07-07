@@ -51,7 +51,8 @@ export const ProjectDetailContainer = styled.div`
     .main-img {
       width: 700px;
       height: 394px;
-      background-position: center;
+      object-fit: cover;
+      object-position: center;
     }
     .imgs {
       display: flex;
@@ -65,7 +66,7 @@ export const ProjectDetailContainer = styled.div`
         width: 100%;
         height: 135px;
         object-fit: cover;
-        object-position: center top;
+        object-position: center;
         &.active {
           border: 3px solid ${pallete.main_color};
         }
