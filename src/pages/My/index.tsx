@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Redirect } from "react-router";
 import { customAxios } from "utils/customAxios";
 import useModal from "hooks/useModal";
+import ProjectList from "components/ProjectList";
 
 interface Form {
   email: string;
@@ -16,8 +17,14 @@ interface Form {
 const My = () => {
   const { ModalPortal, openModal, closeModal } = useModal();
   const { data: userData, error } = useSWR("/user/me", fetcher);
+  const { data: userProject, error: projectError } = useSWR(
+    `/user/${userData?.user.id}`,
+    fetcher
+  );
   const { register, handleSubmit } = useForm();
   let isHandle: boolean = false;
+  console.log(userData);
+  console.log(userProject?.user.projects);
 
   const handleLogout = useCallback(() => {
     sessionStorage.clear();
@@ -82,6 +89,11 @@ const My = () => {
         </div>
         <h1>{userData?.user.name}</h1>
         <button onClick={handleLogout}>로그아웃</button>
+        <ProjectList
+          title={"내가 쓴 게시글"}
+          subTitle="내가 작성한 프로젝트를 확인 해 보세요!"
+          projects={userProject?.user.projects}
+        />
       </MyInfoCardContainer>
       <ModalPortal>
         <Contaienr>

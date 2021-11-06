@@ -33,14 +33,14 @@ const Create = () => {
   const [makers, setMakers] = useState<UserType[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<any>();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [url, setUrl] = useState<any>();
   const history = useHistory();
 
   const { data: userData, error } = useSWR("/user/me", fetcher);
 
   const handleDeleteMaker = useCallback(
     (id: number) => {
-      setMakers(makers.filter((maker) => maker.id !== id));
+      setMakers(makers.filter(maker => maker.id !== id));
     },
     [makers]
   );
@@ -87,18 +87,18 @@ const Create = () => {
 
         const tags = hashTag
           .split(/\s*(#\S+)\s*/)
-          .map((tag) => tag.replace("#", ""))
-          .filter((tag) => tag !== "");
+          .map(tag => tag.replace("#", ""))
+          .filter(tag => tag !== "");
 
-        const users = makers.map((user) => user.id);
+        const users = makers.map(user => user.id);
 
         form.append("title", title);
         form.append("content", content);
 
-        users.forEach((user) => {
+        users.forEach(user => {
           form.append("users", String(user));
         });
-        tags.forEach((tag) => {
+        tags.forEach(tag => {
           form.append("tags", tag);
         });
         selectedFiles.forEach((file: any) => {
@@ -114,12 +114,12 @@ const Create = () => {
               "Content-Type": "multipart/form-data",
             },
           })
-          .then((response) => {
+          .then(response => {
             setIsLoading(false);
             toast.success(response.data.message);
             history.push("/");
           })
-          .catch((error) => {
+          .catch(error => {
             setIsLoading(false);
             toast.error(error.response.data.message);
           });
@@ -138,10 +138,10 @@ const Create = () => {
               name: makerName,
             },
           })
-          .then((response) => {
+          .then(response => {
             setSearchedMakerList(response.data.userList);
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error);
           });
       } else {
@@ -151,23 +151,18 @@ const Create = () => {
     [onChangeMakerName, makerName, setSearchedMakerList]
   );
 
-  const handleFileInput = useCallback((e) => {
+  const handleFileInput = useCallback(e => {
     const reader = new FileReader();
     const file = e.target.files[0];
     const filesInArr = Array.from(e.target.files);
 
     reader.onloadend = () => {
       setSelectedFiles(filesInArr);
+      setUrl(reader.result);
     };
 
     if (file) {
       reader.readAsDataURL(file);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (textareaRef.current) {
-      autosize(textareaRef.current);
     }
   }, []);
 
@@ -224,7 +219,7 @@ const Create = () => {
       />
       {searchedMakerList !== undefined && makerName !== "" && (
         <SearchedMakerList>
-          {searchedMakerList.map((user) => {
+          {searchedMakerList.map(user => {
             return (
               <li
                 onClick={() => {
@@ -260,6 +255,11 @@ const Create = () => {
       <ul className="hashs">{mapHashTag}</ul>
 
       <input type="file" multiple onChange={handleFileInput} />
+      {url && <img src={url.toString()} alt="" />}
+      {/* {selectedFiles&&
+      selectedFiles.map(file=>(
+        <img src={file.} alt=""/>
+      ))} */}
 
       <Button
         style={{

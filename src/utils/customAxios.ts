@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export const customAxios = axios.create({
-  baseURL: "http://10.80.162.184:8080",
+  baseURL: "http://10.80.162.195:8020",
 });
 
 const accessToken = sessionStorage.getItem("access_token") || "";

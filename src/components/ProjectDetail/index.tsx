@@ -20,14 +20,15 @@ const ProjectDetail = () => {
 
   const { data: userData, error } = useSWR("/user/me", fetcher);
   const { id: projectId } = useParams<Param>();
-  const { data: detailProject } = useSWR(
-    `/project/detail/${projectId}`,
+  const { data: detailProject, error: detailProjectError } = useSWR(
+    `/project/${projectId}`,
     fetcher
   );
 
   const [isLiked, setIsLiked] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log(detailProjectError);
     setMainImageUrl(detailProject?.project.files[0].fileLocation);
     setIsLiked(detailProject?.project.likeState);
   }, [detailProject?.project.files, detailProject?.project.likeState]);
@@ -54,7 +55,7 @@ const ProjectDetail = () => {
   });
 
   const handleClickLike = useCallback(async () => {
-    setIsLiked((prev) => !prev);
+    setIsLiked(prev => !prev);
 
     await customAxios.put(`like/${projectId}`);
   }, [projectId]);

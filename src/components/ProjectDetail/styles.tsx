@@ -67,6 +67,7 @@ export const ProjectDetailContainer = styled.div`
         height: 135px;
         object-fit: cover;
         object-position: center;
+        box-sizing: border-box;
         &.active {
           border: 3px solid ${pallete.main_color};
         }
